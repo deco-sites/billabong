@@ -15,6 +15,8 @@ export interface Banner {
    * @description When you click you go to
    */
   href: string;
+  text?: string;
+  cta?: string;
 }
 
 export type BorderRadius =
@@ -32,12 +34,12 @@ export interface Props {
   /**
    * @description Default is 2 for mobile and all for desktop
    */
-  itemsPerLine: {
-    /** @default 2 */
-    mobile?: 1 | 2;
-    /** @default 4 */
-    desktop?: 1 | 2 | 4 | 6 | 8;
-  };
+  // itemsPerLine: {
+  //   /** @default 2 */
+  //   mobile?: 1;
+  //   /** @default 4 */
+  //   desktop?: 1;
+  // };
   /**
    * @description Item's border radius in px
    */
@@ -47,21 +49,9 @@ export interface Props {
     /** @default none */
     desktop?: BorderRadius;
   };
+  fullWidth?: false | true;
   banners: Banner[];
 }
-
-const MOBILE_COLUMNS = {
-  1: "grid-cols-1",
-  2: "grid-cols-2",
-};
-
-const DESKTOP_COLUMNS = {
-  1: "sm:grid-cols-1",
-  2: "sm:grid-cols-2",
-  4: "sm:grid-cols-4",
-  6: "sm:grid-cols-6",
-  8: "sm:grid-cols-8",
-};
 
 const RADIUS_MOBILE = {
   "none": "rounded-none",
@@ -85,14 +75,14 @@ const RADIUS_DESKTOP = {
   "full": "sm:rounded-full",
 };
 
-export default function BannerGrid({
+export default function Banner({
   title,
-  itemsPerLine,
   borderRadius,
   banners = [],
+  fullWidth,
 }: Props) {
   return (
-    <section class="container w-full px-4 md:px-0 mx-auto">
+    <section class={`xl:container w-full mx-auto ${fullWidth ? "px-0" : "px-5"}`}>
       {title &&
         (
           <div class="py-6 md:py-0 md:pb-[40px] flex items-center mt-6">
@@ -104,14 +94,12 @@ export default function BannerGrid({
           </div>
         )}
       <div
-        class={`grid gap-4 md:gap-6 ${
-          MOBILE_COLUMNS[itemsPerLine?.mobile ?? 2]
-        } ${DESKTOP_COLUMNS[itemsPerLine?.desktop ?? 4]}`}
+        class={`grid gap-4 md:gap-6 grid-cols-1`}
       >
-        {banners.map(({ href, srcMobile, srcDesktop, alt }) => (
+        {banners.map(({ href, srcMobile, srcDesktop, alt, text, cta }) => (
           <a
             href={href}
-            class={`overflow-hidden ${
+            class={`overflow-hidden relative ${
               RADIUS_MOBILE[borderRadius.mobile ?? "none"]
             } ${RADIUS_DESKTOP[borderRadius.desktop ?? "none"]} `}
           >
@@ -119,14 +107,14 @@ export default function BannerGrid({
               <Source
                 media="(max-width: 767px)"
                 src={srcMobile}
-                width={100}
-                height={100}
+                width={160}
+                height={70}
               />
               <Source
                 media="(min-width: 768px)"
                 src={srcDesktop ? srcDesktop : srcMobile}
-                width={250}
-                height={250}
+                width={320}
+                height={140}
               />
               <img
                 class="w-full"
@@ -137,6 +125,13 @@ export default function BannerGrid({
                 loading="lazy"
               />
             </Picture>
+            <div class="absolute top-0 left-0 w-full h-full hover:bg-gray-600 hover:opacity-30" />
+            { text || cta ? (
+              <div class={`pt-4 text-black flex flex-col p-2 gap-2 tracking-widest`}>
+                {text && <h2 class="text-3xl">{text}</h2>}
+                {cta && <p class="text-xl text-black tracking-widest">{cta}</p> }
+              </div>
+            ) : "" }
           </a>
         ))}
       </div>
