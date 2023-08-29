@@ -82,7 +82,9 @@ export default function Banner({
   fullWidth,
 }: Props) {
   return (
-    <section class={`xl:container w-full mx-auto ${fullWidth ? "px-0" : "px-5"}`}>
+    <section
+      class={`xl:container w-full mx-auto ${fullWidth ? "px-0" : "px-5"}`}
+    >
       {title &&
         (
           <div class="py-6 md:py-0 md:pb-[40px] flex items-center mt-6">
@@ -126,12 +128,18 @@ export default function Banner({
               />
             </Picture>
             <div class="absolute top-0 left-0 w-full h-full hover:bg-gray-600 hover:opacity-30" />
-            { text || cta ? (
-              <div class={`pt-4 text-black flex flex-col p-2 gap-2 tracking-widest`}>
-                {text && <h2 class="text-3xl">{text}</h2>}
-                {cta && <p class="text-xl text-black tracking-widest">{cta}</p> }
-              </div>
-            ) : "" }
+            {text || cta
+              ? (
+                <div
+                  class={`pt-4 text-black flex flex-col p-2 gap-2 tracking-widest`}
+                >
+                  {text && <h2 class="text-3xl">{text}</h2>}
+                  {cta && (
+                    <p class="text-xl text-black tracking-widest">{cta}</p>
+                  )}
+                </div>
+              )
+              : ""}
           </a>
         ))}
       </div>

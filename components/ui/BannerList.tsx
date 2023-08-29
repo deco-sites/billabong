@@ -32,7 +32,7 @@ export type BorderRadius =
   | "full";
 
 export interface Props {
-  title?: string 
+  title?: string;
   /**
    * @description Default is 2 for mobile and all for desktop
    */
@@ -52,7 +52,7 @@ export interface Props {
     desktop?: BorderRadius;
   };
   banners: Banner[];
-  textPosition: "Top" | "Bottom" | "Into"
+  textPosition: "Top" | "Bottom" | "Into";
   preload?: boolean;
 }
 
@@ -96,13 +96,13 @@ const RADIUS_DESKTOP = {
 
 function renderWidth(itemsPerLine: number) {
   if (itemsPerLine === 4) {
-    return 74.25
+    return 74.25;
   } else if (itemsPerLine === 3) {
-    return 105
+    return 105;
   } else if (itemsPerLine === 2) {
-    return 135
+    return 135;
   } else {
-    return 0
+    return 0;
   }
 }
 
@@ -133,10 +133,17 @@ export default function BannerList({
           MOBILE_COLUMNS[itemsPerLine?.mobile ?? 2]
         } md:grid-rows-none  ${DESKTOP_COLUMNS[itemsPerLine?.desktop ?? 4]}`}
       >
-        {banners.map(({ href, srcMobile, srcDesktop, alt, text, cta }, index) => (
+        {banners.map((
+          { href, srcMobile, srcDesktop, alt, text, cta },
+          index,
+        ) => (
           <a
             href={href}
-            class={`relative w-[98%] ${textPosition === "Top" ? "flex-col-reverse" : textPosition === "Bottom" && "flex-col"}  `}
+            class={`relative w-[98%] ${
+              textPosition === "Top"
+                ? "flex-col-reverse"
+                : textPosition === "Bottom" && "flex-col"
+            }  `}
           >
             <Picture preload={index === 0 && preload}>
               <Source
@@ -163,12 +170,26 @@ export default function BannerList({
               />
             </Picture>
             <div class="absolute top-0 left-0 w-full h-full hover:bg-gray-600 hover:opacity-30" />
-            { text || cta ? (
-              <div class={`${textPosition === "Into" ? "absolute bottom-0 pb-4 items-center w-full text-white" : "pt-4 text-black"} flex flex-col p-2 gap-2 tracking-widest`}>
-                {text && <h2 class="text-3xl">{text}</h2>}
-                {cta && textPosition !== "Into" ? <p class="text-xl text-black tracking-widest">{cta}</p>  : <Button class="text-2xl text-black bg-white tracking-widest">{cta}</Button> }
-              </div>
-            ) : "" }
+            {text || cta
+              ? (
+                <div
+                  class={`${
+                    textPosition === "Into"
+                      ? "absolute bottom-0 pb-4 items-center w-full text-white"
+                      : "pt-4 text-black"
+                  } flex flex-col p-2 gap-2 tracking-widest`}
+                >
+                  {text && <h2 class="text-3xl">{text}</h2>}
+                  {cta && textPosition !== "Into"
+                    ? <p class="text-xl text-black tracking-widest">{cta}</p>
+                    : (
+                      <Button class="text-2xl text-black bg-white tracking-widest">
+                        {cta}
+                      </Button>
+                    )}
+                </div>
+              )
+              : ""}
           </a>
         ))}
       </div>

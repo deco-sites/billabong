@@ -44,12 +44,11 @@ function Navbar({ items, searchbar, logo }: {
 
       {/* Desktop Version */}
       <div>
-        
         <div class="hidden md:flex flex-row justify-between items-center border-b border-base-200 w-full pl-2 pr-6">
           <div class="flex">
             {logo && (
               <a
-              href="/"
+                href="/"
                 aria-label="Store logo"
                 class="block px-4 py-1 w-[90px]"
               >
@@ -58,7 +57,7 @@ function Navbar({ items, searchbar, logo }: {
             )}
             <GenreButton />
           </div>
-        
+
           <div class="flex-none w-44 flex items-center justify-end gap-2">
             <SearchButton />
             <Searchbar searchbar={searchbar} />
