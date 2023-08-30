@@ -65,8 +65,8 @@ function Navbar({ items, searchbar, logo }: {
             {PLATFORM === "vnda" && <CartButtonVDNA />}
           </div>
         </div>
-        <div class="flex-auto flex justify-center">
-          {items.map((item) => <NavItem item={item} />)}
+        <div class="flex-auto flex justify-around bg-[#f8f8f8]">
+          {items.map((item, index) => <NavItem item={item} lastedtwo={index === items.length -1 || index === items.length -2} />)}
         </div>
       </div>
     </>

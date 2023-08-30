@@ -56,7 +56,6 @@ function ProductInfo({ page }: { page: ProductDetailsPage }) {
     product,
   } = page;
   const {
-    description,
     productID,
     offers,
     name = "",
@@ -76,34 +75,38 @@ function ProductInfo({ page }: { page: ProductDetailsPage }) {
 
   return (
     <>
-      {/* Breadcrumb */}
-      <Breadcrumb
-        itemListElement={breadcrumbList?.itemListElement.slice(0, -1)}
-      />
       {/* Code and name */}
       <div class="mt-4 sm:mt-8">
-        <div>
+        {/* <div>
           <span class="text-sm text-base-300">
             Cod. {gtin}
           </span>
-        </div>
+        </div> */}
         <h1>
-          <span class="font-medium text-xl">{name}</span>
+          <span class="font-medium text-xl sm:text-3xl">{name}</span>
         </h1>
       </div>
       {/* Prices */}
-      <div class="mt-4">
-        <div class="flex flex-row gap-2 items-center">
-          <span class="line-through text-base-300 text-xs">
-            {formatPrice(listPrice, offers!.priceCurrency!)}
-          </span>
-          <span class="font-medium text-xl text-secondary">
-            {formatPrice(price, offers!.priceCurrency!)}
-          </span>
+      <div class="mt-4 flex">
+        <div class="w-1/2">
+          <div class="flex flex-row sm:flex-col gap-2 sm:gap-0 items-center sm:items-start">
+            <span class="line-through text-base-300 text-xl">
+              {formatPrice(listPrice, offers!.priceCurrency!)}
+            </span>
+            <span class="font-medium text-xl text-[#ee1717]">
+              {formatPrice(price, offers!.priceCurrency!)}
+            </span>
+          </div>
+          <p class="text-sm text-base-300">
+            {installments}
+          </p>
+          <p>
+            à vista com <span class="font-bold">5%</span> de desconto no boleto
+          </p>
         </div>
-        <span class="text-sm text-base-300">
-          {installments}
-        </span>
+        <div  class="w-1/2">
+          REVIEW
+        </div>
       </div>
       {/* Sku Selector */}
       <div class="mt-4 sm:mt-6">
@@ -145,7 +148,7 @@ function ProductInfo({ page }: { page: ProductDetailsPage }) {
           : <OutOfStock productID={productID} />}
       </div>
       {/* Shipping Simulation */}
-      <div class="mt-8">
+      {/* <div class="mt-8">
         <ShippingSimulation
           items={[{
             id: Number(product.sku),
@@ -153,18 +156,7 @@ function ProductInfo({ page }: { page: ProductDetailsPage }) {
             seller: seller,
           }]}
         />
-      </div>
-      {/* Description card */}
-      <div class="mt-4 sm:mt-6">
-        <span class="text-sm">
-          {description && (
-            <details>
-              <summary class="cursor-pointer">Descrição</summary>
-              <div class="ml-2 mt-2">{description}</div>
-            </details>
-          )}
-        </span>
-      </div>
+      </div> */}
       {/* Analytics Event */}
       <SendEventOnLoad
         event={{
@@ -264,7 +256,13 @@ function Details({
    */
   if (variant === "slider") {
     return (
-      <>
+      <div class="flex flex-col">
+        {/* Breadcrumb */}
+        <div class="py-4">
+          <Breadcrumb
+            itemListElement={page?.breadcrumbList?.itemListElement.slice(0, -1)}
+          />
+        </div>
         <div
           id={id}
           class="grid grid-cols-1 gap-4 sm:grid-cols-[max-content_40vw_40vw] sm:grid-rows-1 sm:justify-center"
@@ -340,7 +338,18 @@ function Details({
           </div>
         </div>
         <SliderJS rootId={id}></SliderJS>
-      </>
+        {/* Description card */}
+        <div class="mt-4 sm:mt-6 mx-4">
+          <span class="text-sm">
+            {page?.product?.description && (
+              <details>
+                <summary class="cursor-pointer">Descrição</summary>
+                <div class="ml-2 mt-2">{page?.product?.description}</div>
+              </details>
+            )}
+          </span>
+        </div>
+      </div>
     );
   }
 

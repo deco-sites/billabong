@@ -143,16 +143,16 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
           }
         `}
         >
-          <WishlistIcon
+          {/* <WishlistIcon
             productGroupID={productGroupID}
             productID={productID}
-          />
+          /> */}
         </div>
         {/* Product Images */}
         <a
           href={url && relative(url)}
           aria-label="view product"
-          class="grid grid-cols-1 grid-rows-1 w-full"
+          class="grid grid-cols-1 grid-rows-1 w-full relative"
         >
           <Image
             src={front.url!}
@@ -182,6 +182,15 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
               decoding="async"
             />
           )}
+
+          {listPrice && price && listPrice > price
+            ? <div class="absolute top-3 w-full flex justify-center">
+              <div class=" text-black text-sm font-bold">{`-${
+                (100 - (100 / (listPrice as number / price as number))).toFixed(0)
+                }% OFF`}
+              </div>
+            </div>
+            : ""}
         </a>
         <figcaption
           class={`
@@ -201,14 +210,14 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
         </figcaption>
       </figure>
       {/* Prices & Name */}
-      <div class="flex-auto flex flex-col p-2 gap-3 lg:gap-4">
+      <div class="flex-auto flex flex-col p-2 gap-3 lg:gap-4 border-b border-b-[#d8d8d8] divide-solid">
         {/* SKU Selector */}
         {(!l?.elementsPositions?.skuSelector ||
           l?.elementsPositions?.skuSelector === "Top") && (
           <>
             {l?.hide?.skuSelector ? "" : (
               <ul
-                class={`flex items-center gap-2 w-full overflow-auto p-3 ${
+                class={`flex items-center gap-2 w-full overflow-auto p-3 min-h-[56px] ${
                   align === "center" ? "justify-center" : "justify-start"
                 } ${l?.onMouseOver?.showSkuSelector ? "lg:hidden" : ""}`}
               >
@@ -261,9 +270,14 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
             {l?.hide?.installments
               ? ""
               : (
-                <div class="text-base-300 text-sm lg:text-base">
-                  ou {installments}
-                </div>
+                <>
+                  <div class="text-base-300 text-sm lg:text-base">
+                    {installments}
+                  </div>
+                  <div>
+                    à vista com <span class="font-bold">5%</span> de desconto no boleto
+                  </div>
+                </>
               )}
           </div>
         )}
