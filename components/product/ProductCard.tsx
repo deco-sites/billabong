@@ -143,10 +143,12 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
           }
         `}
         >
-          {/* <WishlistIcon
+          {
+            /* <WishlistIcon
             productGroupID={productGroupID}
             productID={productID}
-          /> */}
+          /> */
+          }
         </div>
         {/* Product Images */}
         <a
@@ -184,12 +186,16 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
           )}
 
           {listPrice && price && listPrice > price
-            ? <div class="absolute top-3 w-full flex justify-center">
-              <div class=" text-black text-sm font-bold">{`-${
-                (100 - (100 / (listPrice as number / price as number))).toFixed(0)
-                }% OFF`}
+            ? (
+              <div class="absolute top-3 w-full flex justify-center">
+                <div class=" text-black text-sm font-bold">
+                  {`-${
+                    (100 - (100 / (listPrice as number / price as number)))
+                      .toFixed(0)
+                  }% OFF`}
+                </div>
               </div>
-            </div>
+            )
             : ""}
         </a>
         <figcaption
@@ -267,18 +273,17 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
                 {formatPrice(price, offers!.priceCurrency!)}
               </div>
             </div>
-            {l?.hide?.installments
-              ? ""
-              : (
-                <>
-                  <div class="text-base-300 text-sm lg:text-base">
-                    {installments}
-                  </div>
-                  <div>
-                    à vista com <span class="font-bold">5%</span> de desconto no boleto
-                  </div>
-                </>
-              )}
+            {l?.hide?.installments ? "" : (
+              <>
+                <div class="text-base-300 text-sm lg:text-base">
+                  {installments}
+                </div>
+                <div>
+                  à vista com <span class="font-bold">5%</span>{" "}
+                  de desconto no boleto
+                </div>
+              </>
+            )}
           </div>
         )}
 

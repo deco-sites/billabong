@@ -66,7 +66,13 @@ function Navbar({ items, searchbar, logo }: {
           </div>
         </div>
         <div class="flex-auto flex justify-around bg-[#f8f8f8]">
-          {items.map((item, index) => <NavItem item={item} lastedtwo={index === items.length -1 || index === items.length -2} />)}
+          {items.map((item, index) => (
+            <NavItem
+              item={item}
+              lastedtwo={index === items.length - 1 ||
+                index === items.length - 2}
+            />
+          ))}
         </div>
       </div>
     </>

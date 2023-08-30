@@ -8,7 +8,7 @@ import AddToCartButtonVNDA from "$store/islands/AddToCartButton/vnda.tsx";
 import AddToCartButtonVTEX from "$store/islands/AddToCartButton/vtex.tsx";
 import OutOfStock from "$store/islands/OutOfStock.tsx";
 import ProductImageZoom from "$store/islands/ProductImageZoom.tsx";
-import ShippingSimulation from "$store/islands/ShippingSimulation.tsx";
+// import ShippingSimulation from "$store/islands/ShippingSimulation.tsx";
 import SliderJS from "$store/islands/SliderJS.tsx";
 import WishlistButton from "$store/islands/WishlistButton.tsx";
 import { formatPrice } from "$store/sdk/format.ts";
@@ -77,11 +77,13 @@ function ProductInfo({ page }: { page: ProductDetailsPage }) {
     <>
       {/* Code and name */}
       <div class="mt-4 sm:mt-8">
-        {/* <div>
+        {
+          /* <div>
           <span class="text-sm text-base-300">
             Cod. {gtin}
           </span>
-        </div> */}
+        </div> */
+        }
         <h1>
           <span class="font-medium text-xl sm:text-3xl">{name}</span>
         </h1>
@@ -104,7 +106,8 @@ function ProductInfo({ page }: { page: ProductDetailsPage }) {
             à vista com <span class="font-bold">5%</span> de desconto no boleto
           </p>
         </div>
-        <div  class="w-1/2">
+        <div class="w-1/2">
+          {/* <ReviewProduct /> */}
           REVIEW
         </div>
       </div>
@@ -148,7 +151,8 @@ function ProductInfo({ page }: { page: ProductDetailsPage }) {
           : <OutOfStock productID={productID} />}
       </div>
       {/* Shipping Simulation */}
-      {/* <div class="mt-8">
+      {
+        /* <div class="mt-8">
         <ShippingSimulation
           items={[{
             id: Number(product.sku),
@@ -156,7 +160,8 @@ function ProductInfo({ page }: { page: ProductDetailsPage }) {
             seller: seller,
           }]}
         />
-      </div> */}
+      </div> */
+      }
       {/* Analytics Event */}
       <SendEventOnLoad
         event={{
