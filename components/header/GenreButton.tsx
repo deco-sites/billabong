@@ -3,12 +3,16 @@ import Button from "$store/components/ui/Button.tsx";
 export default function GenreButton() {
   return (
     <div>
-      <Button>
-        Masculino
-      </Button>
-      <Button>
-        Feminino
-      </Button>
+      <a href="/masculino">
+        <Button>
+          Masculino
+        </Button>  
+      </a>
+      <a href="/feminino">
+        <Button>
+          Feminino
+        </Button>
+      </a>
     </div>
   );
 }
