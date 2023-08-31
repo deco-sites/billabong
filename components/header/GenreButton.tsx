@@ -6,7 +6,7 @@ export default function GenreButton() {
       <a href="/masculino">
         <Button>
           Masculino
-        </Button>  
+        </Button>
       </a>
       <a href="/feminino">
         <Button>
