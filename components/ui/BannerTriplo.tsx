@@ -90,8 +90,8 @@ export default function BannerTriplo({
             <Source
               media="(max-width: 767px)"
               src={banners[0]?.srcMobile}
-              width={38}
-              height={27.5}
+              width={76}
+              height={55}
             />
             <Source
               media="(min-width: 768px)"

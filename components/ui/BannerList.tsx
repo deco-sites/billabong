@@ -149,8 +149,8 @@ export default function BannerList({
               <Source
                 media="(max-width: 767px)"
                 src={srcMobile}
-                width={renderWidth(itemsPerLine.mobile ?? 0) / 2}
-                height={68.75}
+                width={renderWidth(itemsPerLine.mobile ?? 0)}
+                height={137.5}
               />
               <Source
                 media="(min-width: 768px)"
