@@ -151,8 +151,8 @@ export default function BannerTriplo({
                     <Source
                       media="(min-width: 768px)"
                       src={srcDesktop ? srcDesktop : srcMobile}
-                      width={89}
-                      height={45}
+                      width={133.5}
+                      height={67.5}
                     />
                     <img
                       class="w-full object-cover"
