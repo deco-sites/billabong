@@ -48,6 +48,10 @@
   .cookiesConsentFont {
     font-family: 'Roboto', Arial, sans-serif;
   }
+  
+  .cookiesConsentFont.hidden {
+    display: none;
+  }
 }
 
 body section::-webkit-scrollbar {

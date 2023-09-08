@@ -4,7 +4,7 @@ const script = (id: string) => {
   const callback = () => {
     const KEY = "store-cookie-consent";
     const ACCEPTED = "accepted";
-    const HIDDEN = "translate-y-[200%]";
+    const HIDDEN = "-translate-y-[200%]";
 
     const consent = localStorage.getItem(KEY);
     const elem = document.getElementById(id);
@@ -40,7 +40,7 @@ export interface Props {
   layout?: {
     position?: "Expanded" | "Left" | "Center" | "Right";
     content?: "Tiled" | "Piled up";
-    bgColor?: "White" | "Black"
+    bgColor?: "White" | "Black";
   };
 }
 
@@ -85,7 +85,11 @@ function CookieConsent(props: Props) {
         <div
           class={`
            flex flex-col gap-4 rounded 
-          ${ layout?.bgColor !== "Black" ? "border border-base-200 shadow bg-base-100" : "bg-black text-white" }
+          ${
+            layout?.bgColor !== "Black"
+              ? "border border-base-200 shadow bg-base-100"
+              : "bg-black text-white"
+          }
           ${
             !layout?.position || layout?.position === "Expanded"
               ? "max-w-[97%] md:max-w-[99%] m-0 p-4 w-full"
@@ -110,7 +114,9 @@ function CookieConsent(props: Props) {
           <div class="flex flex-col md:flex-row">
             <div
               class={`flex-auto flex flex-col gap-4 ${
-                !layout?.content || layout?.content === "Tiled" ? "lg:gap-2" : ""
+                !layout?.content || layout?.content === "Tiled"
+                  ? "lg:gap-2"
+                  : ""
               }`}
             >
               {text && (
@@ -120,16 +126,16 @@ function CookieConsent(props: Props) {
                 />
               )}
             </div>
-            <button class={`btn font-bold mt-4 md:mt-0
-              ${layout?.bgColor !== "Black" ? "" : "bg-[#66bb6a] text-white"}
-            `} data-button-cc-accept>
-            {buttons.allowText}
-          </button>
-        </div>
+            <button
+              class={`btn font-bold mt-4 md:mt-0 ${layout?.bgColor !== "Black" ? "" : "bg-[#66bb6a] text-white"}`}
+              data-button-cc-accept
+            >
+              {buttons.allowText}
+            </button>
           </div>
-       
+        </div>
       </div>
-   
+
       <script
         type="module"
         dangerouslySetInnerHTML={{ __html: `(${script})("${id}");` }}
