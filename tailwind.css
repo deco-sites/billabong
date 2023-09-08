@@ -22,6 +22,10 @@
     overflow: hidden;
     height: 100vh;
   }
+
+  body {
+    font-family: 'Heebo', sans-serif;
+  }
   
   section, ul {
     scrollbar-color: gray transparent;   /* scroll thumb and track */
@@ -39,6 +43,10 @@
     background-color: gray;    /* color of the scroll thumb */
     border-radius: 20px;       /* roundness of the scroll thumb */
     border: 3px solid transparent;  /* creates padding around scroll thumb */
+  }
+
+  .cookiesConsentFont {
+    font-family: 'Roboto', Arial, sans-serif;
   }
 }
 
