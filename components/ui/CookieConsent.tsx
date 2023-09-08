@@ -76,7 +76,7 @@ function CookieConsent(props: Props) {
         id={id}
         class={`
           cookiesConsentFont
-          transform-gpu transition fixed top-0 w-screen z-50 lg:flex
+          transform-gpu -translate-y-[200%] transition fixed top-0 w-screen z-50 lg:flex
           ${layout?.position === "Left" ? "lg:justify-start" : ""}
           ${layout?.position === "Center" ? "lg:justify-center" : ""}
           ${layout?.position === "Right" ? "lg:justify-end" : ""}
