@@ -79,9 +79,9 @@ const DEFAULT_PROPS: Props = {
   "banners": [
     {
       "srcMobile":
-        "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/239/b531631b-8523-4feb-ac37-5112873abad2",
+        "",
       "srcDesktop":
-        "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/239/b531631b-8523-4feb-ac37-5112873abad2",
+        "",
       "alt": "Fashion",
       "href": "/",
     },
@@ -89,23 +89,23 @@ const DEFAULT_PROPS: Props = {
       "alt": "Fashion",
       "href": "/",
       "srcMobile":
-        "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/239/1125d938-89ff-4aae-a354-63d4241394a6",
+        "",
       "srcDesktop":
-        "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/239/1125d938-89ff-4aae-a354-63d4241394a6",
+        "",
     },
     {
       "srcMobile":
-        "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/239/dd1e2acb-ff80-49f9-8f56-1deac3b7a42d",
+        "",
       "srcDesktop":
-        "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/239/dd1e2acb-ff80-49f9-8f56-1deac3b7a42d",
+        "",
       "href": "/",
       "alt": "Fashion",
     },
     {
       "srcMobile":
-        "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/239/0b85ba2d-48b1-4f5b-b619-7f4a7f50b455",
+        "",
       "srcDesktop":
-        "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/239/0b85ba2d-48b1-4f5b-b619-7f4a7f50b455",
+        "",
       "alt": "Fashion",
       "href": "/",
     },

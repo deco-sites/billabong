@@ -69,8 +69,8 @@ function Navbar({ items, searchbar, logo }: {
           {items.map((item, index) => (
             <NavItem
               item={item}
-              lastedtwo={index === items.length - 1 ||
-                index === items.length - 2}
+              length={items?.length}
+              index={index}
             />
           ))}
         </div>

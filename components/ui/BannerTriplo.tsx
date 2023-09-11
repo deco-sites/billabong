@@ -82,7 +82,7 @@ export default function BannerTriplo({
       >
         <a
           href={banners[0]?.href}
-          class={`overflow-hidden relative shrink-[7] ${
+          class={`overflow-hidden relative ${
             RADIUS_MOBILE[borderRadius.mobile ?? "none"]
           } ${RADIUS_DESKTOP[borderRadius.desktop ?? "none"]} `}
         >
@@ -102,7 +102,7 @@ export default function BannerTriplo({
               height={99}
             />
             <img
-              class="w-full object-cover"
+              class="w-full object-cover h-[550px]"
               sizes="(max-width: 640px) 100vw, 30vw"
               src={banners[0]?.srcMobile}
               alt={banners[0]?.alt}
@@ -128,7 +128,7 @@ export default function BannerTriplo({
             )
             : ""}
         </a>
-        <div className="flex flex-col shrink-[11]">
+        <div className="flex flex-col">
           {banners.map((
             { href, srcMobile, srcDesktop, alt, text, cta },
             index,
@@ -155,7 +155,7 @@ export default function BannerTriplo({
                       height={67.5}
                     />
                     <img
-                      class="w-full object-cover"
+                      class="w-full object-cover h-[227px]"
                       sizes="(max-width: 640px) 100vw, 30vw"
                       src={srcMobile}
                       alt={alt}

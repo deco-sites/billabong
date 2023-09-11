@@ -187,14 +187,21 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
 
           {listPrice && price && listPrice > price
             ? (
+              <>
               <div class="absolute top-3 w-full flex justify-center">
-                <div class=" text-black text-sm font-bold">
+                <div class=" text-[#202020] text-[11px] bg-[#f0f0f0] font-bold tracking-widest">
                   {`-${
                     (100 - (100 / (listPrice as number / price as number)))
                       .toFixed(0)
                   }% OFF`}
                 </div>
               </div>
+              <div class="absolute left-5 top-10">
+                <div class="bg-black text-[#f4f4f4] font-bold text-xs py-1 px-4 tracking-widest">
+                  SALE
+                </div>
+              </div>
+              </>
             )
             : ""}
         </a>
@@ -247,7 +254,7 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
               {l?.hide?.productDescription
                 ? ""
                 : (
-                  <p class="truncate text-sm lg:text-sm text-neutral">
+                  <p class="truncate text-sm">
                     {product.description}
                   </p>
                 )}
@@ -263,22 +270,20 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
               } ${align === "center" ? "justify-center" : "justify-start"}`}
             >
               <div
-                class={`line-through text-base-300 text-xs ${
-                  l?.basics?.oldPriceSize === "Normal" ? "lg:text-xl" : ""
-                }`}
+                class={`line-through text-[#999999] text-xs`}
               >
                 {formatPrice(listPrice, offers!.priceCurrency!)}
               </div>
-              <div class="text-accent text-base lg:text-xl">
+              <div class="text-[#333333] text-xs ">
                 {formatPrice(price, offers!.priceCurrency!)}
               </div>
             </div>
             {l?.hide?.installments ? "" : (
               <>
-                <div class="text-base-300 text-sm lg:text-base">
+                <div class="text-[#202020] text-xs">
                   {installments}
                 </div>
-                <div>
+                <div class="text-[#202020] text-xs">
                   à vista com <span class="font-bold">5%</span>{" "}
                   de desconto no boleto
                 </div>

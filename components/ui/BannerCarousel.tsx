@@ -128,20 +128,20 @@ function Buttons() {
   return (
     <>
       <div class="flex items-center justify-center z-10 col-start-1 row-start-2">
-        <Slider.PrevButton class="btn btn-circle glass">
+        <Slider.PrevButton class="text-black">
           <Icon
-            class="text-base-100"
-            size={24}
+            class="text-black"
+            size={38}
             id="ChevronLeft"
             strokeWidth={3}
           />
         </Slider.PrevButton>
       </div>
       <div class="flex items-center justify-center z-10 col-start-3 row-start-2">
-        <Slider.NextButton class="btn btn-circle glass">
+        <Slider.NextButton class="text-black">
           <Icon
-            class="text-base-100"
-            size={24}
+            class="text-black"
+            size={38}
             id="ChevronRight"
             strokeWidth={3}
           />

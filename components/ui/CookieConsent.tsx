@@ -15,10 +15,10 @@ const script = (id: string) => {
         localStorage.setItem(KEY, ACCEPTED);
         elem.classList.add(HIDDEN);
       });
-      const close = elem.querySelector("[data-button-cc-close]");
-      close &&
-        close.addEventListener("click", () => elem.classList.add(HIDDEN));
-      elem.classList.remove(HIDDEN);
+      // const close = elem.querySelector("[data-button-cc-close]");
+      // close &&
+      //   close.addEventListener("click", () => elem.classList.add(HIDDEN));
+      // elem.classList.remove(HIDDEN);
     }
   };
 
@@ -29,13 +29,8 @@ export interface Props {
   title?: string;
   /** @format html */
   text?: string;
-  // policy?: {
-  //   text?: string;
-  //   link?: string;
-  // };
   buttons?: {
     allowText: string;
-    // cancelText?: string;
   };
   layout?: {
     position?: "Expanded" | "Left" | "Center" | "Right";
@@ -48,13 +43,8 @@ const DEFAULT_PROPS = {
   title: "Cookies",
   text:
     "Guardamos estatísticas de visitas para melhorar sua experiência de navegação.",
-  policy: {
-    text: "Saiba mais sobre sobre política de privacidade",
-    link: "/politica-de-privacidade",
-  },
   buttons: {
     allowText: "Aceitar",
-    cancelText: "Fechar",
   },
   layout: {
     position: "Expanded",
@@ -65,7 +55,7 @@ const DEFAULT_PROPS = {
 
 function CookieConsent(props: Props) {
   const id = useId();
-  const { title, text, policy, buttons, layout } = {
+  const { title, text, buttons, layout } = {
     ...DEFAULT_PROPS,
     ...props,
   };
@@ -127,7 +117,9 @@ function CookieConsent(props: Props) {
               )}
             </div>
             <button
-              class={`btn font-bold mt-4 md:mt-0 ${layout?.bgColor !== "Black" ? "" : "bg-[#66bb6a] text-white"}`}
+              class={`btn font-bold mt-4 md:mt-0 ${
+                layout?.bgColor !== "Black" ? "" : "bg-[#66bb6a] text-white"
+              }`}
               data-button-cc-accept
             >
               {buttons.allowText}
