@@ -35,9 +35,12 @@ const variants = {
 
 function Avatar({ content, variant = "default" }: Props) {
   return (
-    <div class="avatar placeholder text-xs">
+    <div class="avatar placeholder text-xs flex justify-between">
+      <span class="pr-2 uppercase font-bold text-sm">
+        {colors[content] ? content : ""}
+      </span>
       <div
-        class={`rounded-full w-8 h-8 ${colors[content] ?? colors[variant]} ${
+        class={`w-8 h-8 ${colors[content] ?? colors[variant]} ${
           variants[variant]
         }`}
       >

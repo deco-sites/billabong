@@ -27,7 +27,7 @@ export interface Layout {
     cta?: boolean;
   };
   onMouseOver?: {
-    image?: "Change image" | "Zoom image";
+    image?: "Change image" | "Zoom image" | "Change Detail";
     card?: "None" | "Move up";
     showFavoriteIcon?: boolean;
     showSkuSelector?: boolean;
@@ -184,23 +184,38 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
               decoding="async"
             />
           )}
+          {(l?.onMouseOver?.image == "Change Detail") && (
+            <div class="relative">
+              <Image
+                src={back?.url ?? front.url!}
+                alt={back?.alternateName ?? front.alternateName}
+                width={WIDTH}
+                height={HEIGHT}
+                class="bg-base-100 col-span-full row-span-full transition-opacity rounded w-full opacity-0 lg:group-hover:opacity-100"
+                sizes="(max-width: 640px) 50vw, 20vw"
+                loading="lazy"
+                decoding="async"
+              />
+              <p class="absolute bottom-0 h-0 hover:h-5">Ver Detalhes</p>
+            </div>
+          )}
 
           {listPrice && price && listPrice > price
             ? (
               <>
-              <div class="absolute top-3 w-full flex justify-center">
-                <div class=" text-[#202020] text-[11px] bg-[#f0f0f0] font-bold tracking-widest">
-                  {`-${
-                    (100 - (100 / (listPrice as number / price as number)))
-                      .toFixed(0)
-                  }% OFF`}
+                <div class="absolute top-3 w-full flex justify-center">
+                  <div class=" text-[#202020] text-[11px] bg-[#f0f0f0] font-bold tracking-widest">
+                    {`-${
+                      (100 - (100 / (listPrice as number / price as number)))
+                        .toFixed(0)
+                    }% OFF`}
+                  </div>
                 </div>
-              </div>
-              <div class="absolute left-5 top-10">
-                <div class="bg-black text-[#f4f4f4] font-bold text-xs py-1 px-4 tracking-widest">
-                  SALE
+                <div class="absolute left-5 top-10">
+                  <div class="bg-black text-[#f4f4f4] font-bold text-xs py-1 px-4 tracking-widest">
+                    SALE
+                  </div>
                 </div>
-              </div>
               </>
             )
             : ""}
@@ -251,30 +266,26 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
                     {name}
                   </h2>
                 )}
-              {l?.hide?.productDescription
-                ? ""
-                : (
-                  <p class="truncate text-sm">
-                    {product.description}
-                  </p>
-                )}
+              {l?.hide?.productDescription ? "" : (
+                <p class="truncate text-sm">
+                  {product.description}
+                </p>
+              )}
             </div>
           )}
         {l?.hide?.allPrices ? "" : (
           <div class="flex flex-col gap-2">
             <div
-              class={`flex flex-col gap-0 ${
-                l?.basics?.oldPriceSize === "Normal"
-                  ? "lg:flex-row lg:gap-2"
-                  : ""
-              } ${align === "center" ? "justify-center" : "justify-start"}`}
+              class={`flex flex-col ${
+                align === "center" ? "justify-center" : "justify-start"
+              }`}
             >
               <div
                 class={`line-through text-[#999999] text-xs`}
               >
                 {formatPrice(listPrice, offers!.priceCurrency!)}
               </div>
-              <div class="text-[#333333] text-xs ">
+              <div class="text-[#333333] text-base font-bold">
                 {formatPrice(price, offers!.priceCurrency!)}
               </div>
             </div>

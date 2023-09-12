@@ -38,8 +38,7 @@ const DEFAULT_PROPS: Props = {
   },
   pins: [],
   image: {
-    mobile:
-      "",
+    mobile: "",
     altText: "Fashion",
   },
 };

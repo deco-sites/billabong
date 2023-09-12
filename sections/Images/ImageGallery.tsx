@@ -78,34 +78,26 @@ const RADIUS: Record<string, Record<BorderRadius, string>> = {
 const DEFAULT_PROPS: Props = {
   "banners": [
     {
-      "srcMobile":
-        "",
-      "srcDesktop":
-        "",
+      "srcMobile": "",
+      "srcDesktop": "",
       "alt": "Fashion",
       "href": "/",
     },
     {
       "alt": "Fashion",
       "href": "/",
-      "srcMobile":
-        "",
-      "srcDesktop":
-        "",
+      "srcMobile": "",
+      "srcDesktop": "",
     },
     {
-      "srcMobile":
-        "",
-      "srcDesktop":
-        "",
+      "srcMobile": "",
+      "srcDesktop": "",
       "href": "/",
       "alt": "Fashion",
     },
     {
-      "srcMobile":
-        "",
-      "srcDesktop":
-        "",
+      "srcMobile": "",
+      "srcDesktop": "",
       "alt": "Fashion",
       "href": "/",
     },

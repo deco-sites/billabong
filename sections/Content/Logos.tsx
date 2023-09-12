@@ -20,13 +20,11 @@ export interface Props {
 const IMAGES = [
   {
     altText: "deco",
-    image:
-      "",
+    image: "",
   },
   {
     altText: "deco",
-    image:
-      "",
+    image: "",
   },
 ];
 

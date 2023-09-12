@@ -1,6 +1,7 @@
 import { SendEventOnLoad } from "$store/components/Analytics.tsx";
 import { Layout as cardLayout } from "$store/components/product/ProductCard.tsx";
-import Filters from "$store/components/search/Filters.tsx";
+import FiltersColm from "$store/components/search/FiltersColm.tsx";
+import FiltersRows from "$store/components/search/FiltersRows.tsx";
 import Icon from "$store/components/ui/Icon.tsx";
 import SearchControls from "$store/islands/SearchControls.tsx";
 import { useOffer } from "$store/sdk/useOffer.ts";
@@ -25,6 +26,14 @@ export interface Props {
   cardLayout?: cardLayout;
 }
 
+function renderPageIndex(pages: number) {
+  let array: number[] | [] = [];
+  for (let index = 1; index <= pages; index++) {
+    array = [...array, index];
+  }
+  return array;
+}
+
 function NotFound() {
   return (
     <div class="w-full flex justify-center items-center py-10">
@@ -39,7 +48,10 @@ function Result({
   cardLayout,
 }: Omit<Props, "page"> & { page: ProductListingPage }) {
   const { products, filters, breadcrumb, pageInfo, sortOptions } = page;
-
+  console.log(pageInfo);
+  const pages = Math.ceil(
+    pageInfo.records as number / (pageInfo?.recordPerPage ?? 1) as number,
+  );
   return (
     <>
       <div class="container px-4 sm:py-10 sm:pt-12">
@@ -50,10 +62,16 @@ function Result({
           displayFilter={layout?.variant === "drawer"}
         />
 
+        {layout?.variant === "aside" && filters.length > 0 && (
+          <aside class="hidden sm:block min-w-[250px] w-full">
+            <FiltersRows filters={filters} />
+          </aside>
+        )}
+
         <div class="flex flex-row">
           {layout?.variant === "aside" && filters.length > 0 && (
             <aside class="hidden sm:block w-min min-w-[250px]">
-              <Filters filters={filters} />
+              <FiltersColm filters={filters} />
             </aside>
           )}
           <div class="flex-grow">
@@ -63,25 +81,39 @@ function Result({
 
         <div class="flex justify-center my-4">
           <div class="join">
-            <a
-              aria-label="previous page link"
-              rel="prev"
-              href={pageInfo.previousPage ?? "#"}
-              class="btn btn-ghost join-item"
-            >
-              <Icon id="ChevronLeft" size={24} strokeWidth={2} />
-            </a>
+            {pageInfo?.currentPage === 1 ? "" : (
+              <a
+                aria-label="previous page link"
+                rel="prev"
+                href={pageInfo.previousPage ?? "#"}
+                class="btn btn-ghost join-item"
+              >
+                <Icon id="ChevronLeft" size={24} strokeWidth={2} />
+              </a>
+            )}
             <span class="btn btn-ghost join-item">
-              Page {pageInfo.currentPage + 1}
+              {renderPageIndex(pages).map((page) => (
+                <span
+                  class={`${
+                    page === pageInfo?.currentPage
+                      ? "font-bold text-[17px]"
+                      : "font-medium text-base"
+                  }`}
+                >
+                  {page}
+                </span>
+              ))}
             </span>
-            <a
-              aria-label="next page link"
-              rel="next"
-              href={pageInfo.nextPage ?? "#"}
-              class="btn btn-ghost join-item"
-            >
-              <Icon id="ChevronRight" size={24} strokeWidth={2} />
-            </a>
+            {pageInfo?.currentPage === pages ? "" : (
+              <a
+                aria-label="next page link"
+                rel="next"
+                href={pageInfo.nextPage ?? "#"}
+                class="btn btn-ghost join-item"
+              >
+                <Icon id="ChevronRight" size={24} strokeWidth={2} />
+              </a>
+            )}
           </div>
         </div>
       </div>

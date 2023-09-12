@@ -12,11 +12,19 @@ export interface INavItem {
   children?: NavItemChild[];
 }
 
-function NavItem({ item, index, length }: { item: INavItem; index: number, length: number }) {
+function NavItem(
+  { item, index, length }: { item: INavItem; index: number; length: number },
+) {
   const { href, label, children } = item;
 
   return (
-    <li class={`group flex items-center ${0 === index ? " text-[#FFF] bg-[#000]" : length - 1 === index && "text-[#FA0505]"}`}>
+    <li
+      class={`group flex items-center ${
+        0 === index
+          ? " text-[#FFF] bg-[#000]"
+          : length - 1 === index && "text-[#FA0505]"
+      }`}
+    >
       <a href={href} class="px-4 py-3">
         <span class="group-hover:underline">
           {label}
@@ -27,7 +35,13 @@ function NavItem({ item, index, length }: { item: INavItem; index: number, lengt
         (
           <div
             class={`fixed hidden hover:flex group-hover:flex z-50 items-start justify-center gap-6 border-base-200 bg-[#f8f8f8] 
-            ${length - 1 === index ? "-translate-x-64 text-[#FA0505]" : index === 0 ? "translate-x-0 bg-[#000]" : "-translate-x-8 border-b-2 border-t" }`}
+            ${
+              length - 1 === index
+                ? "-translate-x-64 text-[#FA0505]"
+                : index === 0
+                ? "translate-x-0 bg-[#000]"
+                : "-translate-x-8 border-b-2 border-t"
+            }`}
             style={{ top: "48px", marginTop: headerHeight }}
           >
             {
@@ -50,7 +64,9 @@ function NavItem({ item, index, length }: { item: INavItem; index: number, lengt
               `}
             >
               {children.map((node) => (
-                <li class={`p-2 ${0 === index ? "text-[#FFF]" : "text-[#000]"}`}>
+                <li
+                  class={`p-2 ${0 === index ? "text-[#FFF]" : "text-[#000]"}`}
+                >
                   <a class="hover:underline" href={node.href}>
                     <span>{node.label}</span>
                   </a>
