@@ -58,9 +58,11 @@ function Navbar({ items, searchbar, logo }: {
             <GenreButton />
           </div>
 
-          <div class="flex-none w-44 flex items-center justify-end gap-2">
-            <SearchButton />
-            <Searchbar searchbar={searchbar} />
+          <div class="flex-none flex items-center justify-end gap-2 h-[49px]">
+            <div class="flex items-center relative">
+              <SearchButton />
+              <Searchbar searchbar={searchbar} />
+            </div>
             {PLATFORM === "vtex" && <CartButtonVTEX />}
             {PLATFORM === "vnda" && <CartButtonVDNA />}
           </div>

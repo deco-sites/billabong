@@ -16,6 +16,20 @@
     margin: 0;
   }
 
+  .input.inputSearch:focus {
+    outline: none;
+  }
+
+  .threeLinePhrase {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    /* line-height: 16px;      fallback 
+    max-height: 32px;      fallback */
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
+  }
+
   /* Disable scroll once drawer/modal is openned */
   body:has(.drawer-toggle:checked),
   body:has(.modal-toggle:checked) {

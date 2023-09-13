@@ -8,7 +8,7 @@ export default function SearchButton() {
   return (
     <>
       <Button
-        class="btn-circle btn-sm btn-ghost hidden sm:block"
+        class={`btn-circle btn-sm btn-ghost hidden sm:block ${displaySearchPopup.value ? "md:bg-[#f8f8f8] rounded-none md:h-12 md:px-2" : ""}`}
         aria-label="search icon button"
         onClick={() => {
           displaySearchPopup.value = !displaySearchPopup.value;

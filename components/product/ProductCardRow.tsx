@@ -54,7 +54,7 @@ const relative = (url: string) => {
 const WIDTH = 100;
 const HEIGHT = 139.5;
 
-function ProductCard({ product, preload, itemListName, layout }: Props) {
+function ProductCardRow({ product, preload, itemListName, layout }: Props) {
   const {
     url,
     productID,
@@ -98,14 +98,12 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
   return (
     <div
       id={id}
-      class={`card card-compact group w-full ${
+      class={`card card-compact group w-full flex-row ${
         align === "center" ? "text-center" : "text-start"
       } ${l?.onMouseOver?.showCardShadow ? "lg:hover:card-bordered" : ""}
         ${
-        l?.onMouseOver?.card === "Move up" &&
-        "duration-500 transition-translate ease-in-out lg:hover:-translate-y-2"
-      }
-      `}
+        l?.onMouseOver?.card === "Move up" && "duration-500 transition-translate ease-in-out lg:hover:-translate-y-2"
+      } border-t border-t-[#d8d8d8] divide-solid rounded-none`}
       data-deco="view-product"
     >
       <SendEventOnClick
@@ -189,7 +187,7 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
               decoding="async"
             />
           )}
-          {listPrice && price && listPrice > price
+          {/* {listPrice && price && listPrice > price
             ? (
               <>
                 <div class="absolute top-3 w-full flex justify-center">
@@ -207,7 +205,7 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
                 </div>
               </>
             )
-            : ""}
+            : ""} */}
         </a>
         <figcaption
           class={`
@@ -227,10 +225,9 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
         </figcaption>
       </figure>
       {/* Prices & Name */}
-      <div class="flex-auto flex flex-col p-2 gap-3 lg:gap-4 border-b border-b-[#d8d8d8] divide-solid">
+      <div class="flex-auto flex flex-row p-2 gap-3 lg:gap-4">
         {/* SKU Selector */}
-        {(!l?.elementsPositions?.skuSelector ||
-          l?.elementsPositions?.skuSelector === "Top") && (
+        {(l?.elementsPositions?.skuSelector === "Top") && (
           <>
             {l?.hide?.skuSelector ? "" : (
               <ul
@@ -244,67 +241,30 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
           </>
         )}
 
-        {l?.hide?.productName && l?.hide?.productDescription
+        {l?.hide?.productName
           ? ""
           : (
-            <div class="flex flex-col gap-0">
+            <div class="flex flex-col gap-0 w-[200px]">
               {l?.hide?.productName
                 ? ""
                 : (
-                  <h2 class="truncate text-base lg:text-lg text-base-content font-bold bg-white">
+                  <h2 class="text-base lg:text-lg text-base-content font-bold bg-white threeLinePhrase">
                     {name}
                   </h2>
                 )}
-              {l?.hide?.productDescription ? "" : (
-                <p class="truncate text-sm">
-                  {product.description}
-                </p>
-              )}
             </div>
           )}
         {l?.hide?.allPrices ? "" : (
           <div class="flex flex-col">
-            {listPrice && price && (
-              listPrice > price
-                ? (
-                  <div
-                    class={`flex flex-col ${
-                      align === "center" ? "justify-center" : "justify-start"
-                    }`}
-                  >
-                    <div
-                      class={`line-through text-[#333333] font-bold text-base`}
-                    >
-                      {formatPrice(listPrice, offers!.priceCurrency!)}
-                    </div>
-                    <div class="text-[#ee1717] text-base font-bold">
-                      {formatPrice(price, offers!.priceCurrency!)}
-                    </div>
-                  </div>
-                )
-                : (
-                  <div
-                    class={`flex flex-col ${
-                      align === "center" ? "justify-center" : "justify-start"
-                    }`}
-                  >
-                    <div class="text-[#333333] text-base font-bold">
-                      {formatPrice(price, offers!.priceCurrency!)}
-                    </div>
-                  </div>
-                )
-            )}
-            {l?.hide?.installments ? "" : (
-              <>
-                <div class="text-[#202020] text-xs">
-                  {installments}
-                </div>
-                <div class="text-[#202020] text-xs">
-                  à vista com <span class="font-bold">5%</span>{" "}
-                  de desconto no boleto
-                </div>
-              </>
-            )}
+            <div
+              class={`flex flex-col ${
+                align === "center" ? "justify-center" : "justify-start"
+              }`}
+            >
+              <div class="text-[#333333] text-base font-bold">
+                {formatPrice(price, offers!.priceCurrency!)}
+              </div>
+            </div>
           </div>
         )}
 
@@ -322,21 +282,9 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
             )}
           </>
         )}
-
-        {!l?.hide?.cta
-          ? (
-            <div
-              class={`flex-auto flex items-end ${
-                l?.onMouseOver?.showCta ? "lg:hidden" : ""
-              }`}
-            >
-              {cta}
-            </div>
-          )
-          : ""}
       </div>
     </div>
   );
 }
 
-export default ProductCard;
+export default ProductCardRow;
