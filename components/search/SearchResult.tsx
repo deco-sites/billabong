@@ -96,7 +96,7 @@ function Result({
                 <span
                   class={`${
                     page === pageInfo?.currentPage
-                      ? "font-bold text-[17px]"
+                      ? "font-bold text-[17px] border bg-[#f8f8f8] p-1"
                       : "font-medium text-base"
                   }`}
                 >

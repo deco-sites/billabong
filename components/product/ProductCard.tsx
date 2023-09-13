@@ -251,7 +251,7 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
               {l?.hide?.productName
                 ? ""
                 : (
-                  <h2 class="truncate text-base lg:text-lg text-base-content">
+                  <h2 class="truncate text-base lg:text-lg text-base-content font-bold bg-white">
                     {name}
                   </h2>
                 )}
@@ -263,21 +263,36 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
             </div>
           )}
         {l?.hide?.allPrices ? "" : (
-          <div class="flex flex-col gap-2">
-            <div
-              class={`flex flex-col ${
-                align === "center" ? "justify-center" : "justify-start"
-              }`}
-            >
-              <div
-                class={`line-through text-[#999999] text-xs`}
-              >
-                {formatPrice(listPrice, offers!.priceCurrency!)}
-              </div>
-              <div class="text-[#333333] text-base font-bold">
-                {formatPrice(price, offers!.priceCurrency!)}
-              </div>
-            </div>
+          <div class="flex flex-col">
+            {listPrice && price && (
+            listPrice > price
+              ? (
+                <div
+                  class={`flex flex-col ${
+                    align === "center" ? "justify-center" : "justify-start"
+                  }`}
+                >
+                  <div
+                    class={`line-through text-[#333333] font-bold text-base`}
+                  >
+                    {formatPrice(listPrice, offers!.priceCurrency!)}
+                  </div>
+                  <div class="text-[#ee1717] text-base font-bold">
+                    {formatPrice(price, offers!.priceCurrency!)}
+                  </div>
+                </div>
+              )
+              : (
+                <div
+                  class={`flex flex-col ${
+                    align === "center" ? "justify-center" : "justify-start"
+                  }`}
+                >
+                  <div class="text-[#333333] text-base font-bold">
+                    {formatPrice(price, offers!.priceCurrency!)}
+                  </div>
+                </div>
+              ))}
             {l?.hide?.installments ? "" : (
               <>
                 <div class="text-[#202020] text-xs">

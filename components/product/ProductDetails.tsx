@@ -10,7 +10,8 @@ import OutOfStock from "$store/islands/OutOfStock.tsx";
 import ProductImageZoom from "$store/islands/ProductImageZoom.tsx";
 // import ShippingSimulation from "$store/islands/ShippingSimulation.tsx";
 import SliderJS from "$store/islands/SliderJS.tsx";
-import WishlistButton from "$store/islands/WishlistButton.tsx";
+import WishlistIcon from "$store/islands/WishlistButton.tsx";
+// import WishlistButton from "$store/islands/WishlistButton.tsx";
 import { formatPrice } from "$store/sdk/format.ts";
 import { useId } from "$store/sdk/useId.ts";
 import { useOffer } from "$store/sdk/useOffer.ts";
@@ -77,32 +78,37 @@ function ProductInfo({ page }: { page: ProductDetailsPage }) {
     <>
       {/* Code and name */}
       <div class="mt-4 sm:mt-8">
-        {
-          /* <div>
-          <span class="text-sm text-base-300">
-            Cod. {gtin}
-          </span>
-        </div> */
-        }
         <h1>
-          <span class="font-medium text-xl sm:text-3xl">{name}</span>
+          <span class="font-medium text-xl md:text-[34px]">{name}</span>
         </h1>
       </div>
       {/* Prices */}
       <div class="mt-4 flex">
         <div class="w-1/2">
           <div class="flex flex-row sm:flex-col gap-2 sm:gap-0 items-center sm:items-start">
-            <span class="line-through text-base-300 text-xl">
-              {formatPrice(listPrice, offers!.priceCurrency!)}
-            </span>
-            <span class="font-medium text-xl text-[#ee1717]">
-              {formatPrice(price, offers!.priceCurrency!)}
-            </span>
+            {listPrice && price && (
+              listPrice > price
+                ? (
+                  <>
+                    <span class="line-through text-[#33333] text-xl font-bold">
+                      {formatPrice(listPrice, offers!.priceCurrency!)}
+                    </span>
+                    <span class="text-xl text-[#ee1717] font-bold">
+                      {formatPrice(price, offers!.priceCurrency!)}
+                    </span>
+                  </>
+                )
+                : (
+                  <span class="text-xl text-[#33333] font-bold">
+                    {formatPrice(price, offers!.priceCurrency!)}
+                  </span>
+                )
+            )}
           </div>
-          <p class="text-sm text-base-300">
+          <p class="text-sm text-[#202020]">
             {installments}
           </p>
-          <p>
+          <p class="text-sm text-[#202020]">
             à vista com <span class="font-bold">5%</span> de desconto no boleto
           </p>
         </div>
@@ -141,11 +147,13 @@ function ProductInfo({ page }: { page: ProductDetailsPage }) {
                 />
               )}
 
-              <WishlistButton
+              {
+                /* <WishlistButton
                 variant="full"
                 productID={productID}
                 productGroupID={productGroupID}
-              />
+              /> */
+              }
             </>
           )
           : <OutOfStock productID={productID} />}
@@ -249,6 +257,8 @@ function Details({
   variant,
 }: { page: ProductDetailsPage; variant: Variant }) {
   const { product } = page;
+  const productGroupID = product?.isVariantOf?.productGroupID ?? "";
+
   const id = useId();
   const images = useStableImages(product);
 
@@ -263,17 +273,17 @@ function Details({
     return (
       <div class="flex flex-col">
         {/* Breadcrumb */}
-        <div class="py-4">
+        <div class="p-4 ">
           <Breadcrumb
             itemListElement={page?.breadcrumbList?.itemListElement.slice(0, -1)}
           />
         </div>
         <div
           id={id}
-          class="grid grid-cols-1 gap-4 sm:grid-cols-[max-content_40vw_40vw] sm:grid-rows-1 sm:justify-center"
+          class="grid grid-cols-1 gap-4 md:grid-cols-[40vw_max-content_40vw] md:grid-rows-1 md:justify-center"
         >
           {/* Image Slider */}
-          <div class="relative sm:col-start-2 sm:col-span-1 sm:row-start-1">
+          <div class="relative sm:col-start-1 md:col-span-1 md:row-start-1">
             <Slider class="carousel carousel-center gap-6 w-screen sm:w-[40vw]">
               {images.map((img, index) => (
                 <Slider.Item
@@ -281,7 +291,7 @@ function Details({
                   class="carousel-item w-full"
                 >
                   <Image
-                    class="w-full"
+                    class="w-full duration-100 transition-scale hover:scale-125"
                     sizes="(max-width: 640px) 100vw, 40vw"
                     style={{ aspectRatio: ASPECT_RATIO }}
                     src={img.url!}
@@ -292,6 +302,12 @@ function Details({
                     preload={index === 0}
                     loading={index === 0 ? "eager" : "lazy"}
                   />
+                  <div class="absolute top-2 z-10 right-0">
+                    <WishlistIcon
+                      productGroupID={productGroupID}
+                      productID={product?.productID}
+                    />
+                  </div>
                 </Slider.Item>
               ))}
             </Slider>
@@ -310,17 +326,19 @@ function Details({
               <Icon size={24} id="ChevronRight" strokeWidth={3} />
             </Slider.NextButton>
 
-            <div class="absolute top-2 right-2 bg-base-100 rounded-full">
+            {
+              /* <div class="absolute top-2 right-2 bg-base-100 rounded-full">
               <ProductImageZoom
                 images={images}
                 width={700}
                 height={Math.trunc(700 * HEIGHT / WIDTH)}
               />
-            </div>
+            </div> */
+            }
           </div>
 
           {/* Dots */}
-          <ul class="flex gap-2 sm:justify-start overflow-auto px-4 sm:px-0 sm:flex-col sm:col-start-1 sm:col-span-1 sm:row-start-1">
+          <ul class="flex gap-2 md:justify-start overflow-auto px-4 md:px-0 md:flex-col md:col-start-2 md:col-span-1 md:row-start-1">
             {images.map((img, index) => (
               <li class="min-w-[63px] sm:min-w-[100px]">
                 <Slider.Dot index={index}>
@@ -338,7 +356,7 @@ function Details({
           </ul>
 
           {/* Product Info */}
-          <div class="px-4 sm:pr-0 sm:pl-6 sm:col-start-3 sm:col-span-1 sm:row-start-1">
+          <div class="px-4 md:pr-0 md:pl-6 md:col-start-3 md:col-span-1 md:row-start-1">
             <ProductInfo page={page} />
           </div>
         </div>
