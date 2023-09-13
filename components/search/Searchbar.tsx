@@ -76,7 +76,7 @@ function Searchbar({
     >
       <div class="flex items-center gap-4">
         <form id={id} action={action} class="join">
-          {loading.value
+          {/* {loading.value
             ? (
               <Button
                 type="submit"
@@ -88,7 +88,7 @@ function Searchbar({
                 <span class="loading loading-spinner loading-xs" />
               </Button>
             )
-            : ""}
+            : ""} */}
           <input
             ref={searchInputRef}
             // id="search-input"
