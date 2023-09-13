@@ -171,6 +171,11 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
             loading={preload ? "eager" : "lazy"}
             decoding="async"
           />
+          {(l?.onMouseOver?.image == "Change Detail") && (
+            <p class="absolute bottom-0 w-full h-full flex items-end justify-center translate-y-11 hover:translate-y-0 transition-transform delay-100 font-bold">
+              Ver Detalhes
+            </p>
+          )}
           {(!l?.onMouseOver?.image ||
             l?.onMouseOver?.image == "Change image") && (
             <Image
@@ -184,22 +189,6 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
               decoding="async"
             />
           )}
-          {(l?.onMouseOver?.image == "Change Detail") && (
-            <div class="relative">
-              <Image
-                src={back?.url ?? front.url!}
-                alt={back?.alternateName ?? front.alternateName}
-                width={WIDTH}
-                height={HEIGHT}
-                class="bg-base-100 col-span-full row-span-full transition-opacity rounded w-full opacity-0 lg:group-hover:opacity-100"
-                sizes="(max-width: 640px) 50vw, 20vw"
-                loading="lazy"
-                decoding="async"
-              />
-              <p class="absolute bottom-0 h-0 hover:h-5">Ver Detalhes</p>
-            </div>
-          )}
-
           {listPrice && price && listPrice > price
             ? (
               <>
