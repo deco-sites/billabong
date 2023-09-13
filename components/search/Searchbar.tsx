@@ -76,17 +76,19 @@ function Searchbar({
     >
       <div class="flex items-center gap-4">
         <form id={id} action={action} class="join">
-          {loading.value ? (
-            <Button
-            type="submit"
-            class="join-item btn-square"
-            aria-label="Search"
-            for={id}
-            tabIndex={-1}
-            >
-            <span class="loading loading-spinner loading-xs" />
-          </Button>
-            ) : ''}
+          {loading.value
+            ? (
+              <Button
+                type="submit"
+                class="join-item btn-square"
+                aria-label="Search"
+                for={id}
+                tabIndex={-1}
+              >
+                <span class="loading loading-spinner loading-xs" />
+              </Button>
+            )
+            : ""}
           <input
             ref={searchInputRef}
             // id="search-input"
@@ -120,9 +122,11 @@ function Searchbar({
         </form>
       </div>
 
-      {!searchInputRef?.current?.value?.length ? "" : notFound
+      {!searchInputRef?.current?.value?.length
+        ? ""
+        : notFound
         ? (
-          <div class="absolute top-[66px] bg-[#f8f8f8] z-[99] left-0 flex flex-col gap-4 w-full">
+          <div class="absolute top-[66px] bg-[#f8f8f8] z-[99] left-0 flex flex-col gap-4 w-full p-3">
             <span
               class="font-medium text-xl text-center"
               role="heading"
@@ -180,7 +184,8 @@ function Searchbar({
                     </div>
                   ))}
                 </div>
-                {/* <Slider class="carousel">
+                {
+                  /* <Slider class="carousel">
                   {products.map((product, index) => (
                     <Slider.Item
                       index={index}
@@ -189,7 +194,8 @@ function Searchbar({
                       <ProductCard product={product} />
                     </Slider.Item>
                   ))}
-                </Slider> */}
+                </Slider> */
+                }
               </div>
             </div>
           </div>

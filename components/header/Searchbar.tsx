@@ -18,7 +18,7 @@ function Searchbar({ searchbar }: Props) {
 
   return (
     <div
-      class={`w-full transition-all ${open ? 'w-auto' : "w-0" }`}
+      class={`w-full transition-all ${open ? "w-auto" : "w-0"}`}
     >
       {open && (
         <Suspense fallback={<span class="loading loading-ring" />}>

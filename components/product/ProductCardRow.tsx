@@ -102,7 +102,8 @@ function ProductCardRow({ product, preload, itemListName, layout }: Props) {
         align === "center" ? "text-center" : "text-start"
       } ${l?.onMouseOver?.showCardShadow ? "lg:hover:card-bordered" : ""}
         ${
-        l?.onMouseOver?.card === "Move up" && "duration-500 transition-translate ease-in-out lg:hover:-translate-y-2"
+        l?.onMouseOver?.card === "Move up" &&
+        "duration-500 transition-translate ease-in-out lg:hover:-translate-y-2"
       } border-t border-t-[#d8d8d8] divide-solid rounded-none`}
       data-deco="view-product"
     >
@@ -187,7 +188,8 @@ function ProductCardRow({ product, preload, itemListName, layout }: Props) {
               decoding="async"
             />
           )}
-          {/* {listPrice && price && listPrice > price
+          {
+            /* {listPrice && price && listPrice > price
             ? (
               <>
                 <div class="absolute top-3 w-full flex justify-center">
@@ -205,7 +207,8 @@ function ProductCardRow({ product, preload, itemListName, layout }: Props) {
                 </div>
               </>
             )
-            : ""} */}
+            : ""} */
+          }
         </a>
         <figcaption
           class={`
@@ -241,19 +244,17 @@ function ProductCardRow({ product, preload, itemListName, layout }: Props) {
           </>
         )}
 
-        {l?.hide?.productName
-          ? ""
-          : (
-            <div class="flex flex-col gap-0 w-[200px]">
-              {l?.hide?.productName
-                ? ""
-                : (
-                  <h2 class="text-base lg:text-lg text-base-content font-bold bg-white threeLinePhrase">
-                    {name}
-                  </h2>
-                )}
-            </div>
-          )}
+        {l?.hide?.productName ? "" : (
+          <div class="flex flex-col gap-0 w-[200px]">
+            {l?.hide?.productName
+              ? ""
+              : (
+                <h2 class="text-base lg:text-lg text-base-content font-bold bg-white threeLinePhrase">
+                  {name}
+                </h2>
+              )}
+          </div>
+        )}
         {l?.hide?.allPrices ? "" : (
           <div class="flex flex-col">
             <div
