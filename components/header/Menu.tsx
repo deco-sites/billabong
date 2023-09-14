@@ -48,7 +48,7 @@ function Menu({ items, menuBottom }: Props) {
       </ul>
 
       <ul class="flex flex-row py-2 bg-[#f8f8f8] justify-around">
-        { menuBottom && menuBottom.map(({ label, href }) => (
+        {menuBottom && menuBottom.map(({ label, href }) => (
           <li>
             <a
               class="flex items-center gap-4 px-4 py-2"
