@@ -1,23 +1,25 @@
 import Icon from "$store/components/ui/Icon.tsx";
-import type { INavItem } from "./NavItem.tsx";
+import type { MenuBottom, NavItem } from "./Header.tsx";
+import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
 
 export interface Props {
-  items: INavItem[];
+  items: NavItem[];
+  menuBottom?: MenuBottom[];
+  logo?: { src: LiveImage; alt: string };
 }
 
-function MenuItem({ item }: { item: INavItem }) {
+function MenuItem({ item }: { item: NavItem }) {
   return (
     <div class="collapse collapse-plus">
       <input type="checkbox" />
-      <div class="collapse-title">{item.label}</div>
+      <div class="collapse-title">{item?.label}</div>
       <div class="collapse-content">
         <ul>
-          <li>
-            <a class="underline text-sm" href={item.href}>Ver todos</a>
-          </li>
-          {item.children?.map((node) => (
+          {item.children?.map((node: NavItem) => (
             <li>
-              <MenuItem item={node} />
+              <a href={node?.href}>
+                <div class="py-2">{node?.label}</div>
+              </a>
             </li>
           ))}
         </ul>
@@ -26,9 +28,17 @@ function MenuItem({ item }: { item: INavItem }) {
   );
 }
 
-function Menu({ items }: Props) {
+function Menu({ items, menuBottom }: Props) {
   return (
-    <div class="flex flex-col h-full">
+    <div class="flex flex-col h-full bg-[#f8f8f8]">
+      <div class="flex flex-row justify-around">
+        <div class="py-4 w-full">
+          <p class="text-[#202020] text-sm text-center">MASCULINO</p>
+        </div>
+        <div class="bg-white py-4 w-full">
+          <p class="text-[#202020] text-sm text-center">FEMININO</p>
+        </div>
+      </div>
       <ul class="px-4 flex-grow flex flex-col divide-y divide-base-200">
         {items.map((item) => (
           <li>
@@ -37,43 +47,17 @@ function Menu({ items }: Props) {
         ))}
       </ul>
 
-      <ul class="flex flex-col py-2 bg-base-200">
-        <li>
-          <a
-            class="flex items-center gap-4 px-4 py-2"
-            href="/wishlist"
-          >
-            <Icon id="Heart" size={24} strokeWidth={2} />
-            <span class="text-sm">Lista de desejos</span>
-          </a>
-        </li>
-        <li>
-          <a
-            class="flex items-center gap-4 px-4 py-2"
-            href="https://www.deco.cx"
-          >
-            <Icon id="MapPin" size={24} strokeWidth={2} />
-            <span class="text-sm">Nossas lojas</span>
-          </a>
-        </li>
-        <li>
-          <a
-            class="flex items-center gap-4 px-4 py-2"
-            href="https://www.deco.cx"
-          >
-            <Icon id="Phone" size={24} strokeWidth={2} />
-            <span class="text-sm">Fale conosco</span>
-          </a>
-        </li>
-        <li>
-          <a
-            class="flex items-center gap-4 px-4 py-2"
-            href="https://www.deco.cx"
-          >
-            <Icon id="User" size={24} strokeWidth={2} />
-            <span class="text-sm">Minha conta</span>
-          </a>
-        </li>
+      <ul class="flex flex-row py-2 bg-[#f8f8f8] justify-around">
+        { menuBottom && menuBottom.map(({ label, href }) => (
+          <li>
+            <a
+              class="flex items-center gap-4 px-4 py-2"
+              href={href}
+            >
+              <span class="text-sm font-bold uppercase">{label}</span>
+            </a>
+          </li>
+        ))}
       </ul>
     </div>
   );

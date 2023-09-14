@@ -23,6 +23,11 @@ export interface NavItem {
   // };
 }
 
+export interface MenuBottom {
+  label: string;
+  href: string;
+}
+
 export interface Props {
   alerts: string[];
   /** @title Search Bar */
@@ -32,6 +37,12 @@ export interface Props {
    * @description Navigation items used both on mobile and desktop menus
    */
   navItems?: NavItem[];
+
+  /**
+   * @title Menu Bottom Options
+   * @description
+   */
+  menuBottom?: MenuBottom[];
 
   /**
    * @title Product suggestions
@@ -52,6 +63,7 @@ function Header({
   alerts,
   searchbar: _searchbar,
   products,
+  menuBottom,
   navItems = [],
   suggestions,
   logo,
@@ -61,7 +73,7 @@ function Header({
     <>
       <header style={{ height: headerHeight }}>
         <Drawers
-          menu={{ items: navItems }}
+          menu={{ items: navItems, menuBottom, logo }}
           searchbar={searchbar}
         >
           <div class="bg-base-100 fixed w-full z-50">
