@@ -131,7 +131,7 @@ function Buttons() {
         <Slider.PrevButton class="text-black">
           <Icon
             class="text-black"
-            size={48}
+            size={35}
             id="ChevronLeft"
             strokeWidth={3}
           />
@@ -141,7 +141,7 @@ function Buttons() {
         <Slider.NextButton class="text-black">
           <Icon
             class="text-black"
-            size={58}
+            size={45}
             id="ChevronRight"
             strokeWidth={3}
           />
