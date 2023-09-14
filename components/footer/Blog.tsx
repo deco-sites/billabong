@@ -20,21 +20,28 @@ export interface BlogItem {
 
 export default function BlogSocial(
   { content, vertical = false }: {
-    content?: BlogItem[];
+    content?: {
+      /** @format html */
+      article?: string;
+
+      blogLinks?: BlogItem[] };
     vertical?: boolean;
   },
 ) {
   console.log(content);
   return (
     <>
-      {content && content.length > 0 && (
+      {content && (
         <div class="flex flex-col">
-          {content.map((blog) => (
-            <div class="flex flex-col gap-4">
-              {blog.title && <h2 class="font-bold">{blog.title}</h2>}
+          {content?.article && <div class="font-bold text-[#202020] text-sm mb-2"
+            dangerouslySetInnerHTML={{ __html: content?.article }}
+          />}
+          {content?.blogLinks && content.blogLinks?.map((blog) => (
+            <div class="flex flex-col gap-2">
+              {blog.title && <h2 class="font-bold text-[#202020] text-sm mb-2">{blog.title}</h2>}
               {blog.links && blog.links?.map(({ label, href }) => {
                 return (
-                  <li>
+                  <div>
                     <a
                       href={href}
                       target="_blank"
@@ -42,18 +49,18 @@ export default function BlogSocial(
                       aria-label={`${label} Logo`}
                       class="flex gap-2 items-center"
                     >
-                      <span class="block p-1 border rounded-full">
+                      <span class="block text-sm text-[#202020] font-medium">
                         {label}
                       </span>
                       {vertical && (
-                        <div class="text-sm hidden lg:block">{label}</div>
+                          <div class="text-sm hidden lg:block text-[#202020] font-medium">{label}</div>
                       )}
                     </a>
-                  </li>
+                  </div>
                 );
               })}
               <ul
-                class={`flex gap-4 ${
+                class={`flex gap-4 mb-8 ${
                   vertical
                     ? "lg:flex-col lg:items-start"
                     : "flex-wrap items-center"
@@ -69,7 +76,7 @@ export default function BlogSocial(
                         aria-label={`${item.label} Logo`}
                         class="flex gap-2 items-center"
                       >
-                        <span class="block p-1 border rounded-full">
+                        <span class="block">
                           <Icon size={24} id={item.label} />
                         </span>
                         {vertical && (

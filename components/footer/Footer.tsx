@@ -40,6 +40,13 @@ export interface BlogItem {
   items?: SocialItem[];
 }
 
+export interface BlogProps {
+  /** @format html */
+  article?: string;
+
+  blogLinks?: BlogItem[]; 
+}
+
 export interface PaymentItem {
   label: "Diners" | "Elo" | "Mastercard" | "Pix" | "Visa";
 }
@@ -101,7 +108,7 @@ export interface Props {
     form?: NewsletterForm;
   };
   sections?: Section[];
-  blog?: BlogItem[];
+  blog?: BlogProps;
   payments?: {
     title?: string;
     items: PaymentItem[];
@@ -155,10 +162,15 @@ function Footer({
       },
     ],
   }],
-  blog = [{
-    links: [{ label: "Mens", href: "#" }],
-    items: [{ label: "Instagram", link: "/" }, { label: "Tiktok", link: "/" }],
-  }],
+  blog = {
+    article: "Estamos juntos nessa. Uma mensagem do nosso time sobre o COVID-19.", 
+    blogLinks: [
+      {
+        links: [{ label: "Mens", href: "#" }],
+        items: [{ label: "Instagram", link: "/" }, { label: "Tiktok", link: "/" }],
+      }
+    ]
+  },
   payments = {
     title: "Formas de pagamento",
     items: [{ label: "Mastercard" }, { label: "Visa" }, { label: "Pix" }],
