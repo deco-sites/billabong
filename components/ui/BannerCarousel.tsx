@@ -53,7 +53,7 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
     <a
       href={action?.href ?? "#"}
       aria-label={action?.label}
-      class="relative overflow-y-hidden w-full"
+      class="relative h-[300px] md:h-[600px] overflow-y-hidden w-full"
     >
       <Picture preload={lcp}>
         <Source
@@ -71,7 +71,7 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
           height={120}
         />
         <img
-          class="object-cover w-full"
+          class="object-cover w-full h-[300px] md:h-full"
           loading={lcp ? "eager" : "lazy"}
           src={desktop}
           alt={alt}
@@ -131,7 +131,7 @@ function Buttons() {
         <Slider.PrevButton class="text-black">
           <Icon
             class="text-black"
-            size={35}
+            size={38}
             id="ChevronLeft"
             strokeWidth={3}
           />
@@ -141,7 +141,7 @@ function Buttons() {
         <Slider.NextButton class="text-black">
           <Icon
             class="text-black"
-            size={45}
+            size={38}
             id="ChevronRight"
             strokeWidth={3}
           />
@@ -157,7 +157,7 @@ function BannerCarousel({ images, preload, interval }: Props) {
   return (
     <div
       id={id}
-      class="grid grid-cols-[48px_1fr_48px] sm:grid-cols-[120px_1fr_120px] grid-rows-[3fr_1fr_2fr_1fr_64px]"
+      class="grid grid-cols-[48px_1fr_48px] sm:grid-cols-[80px_1fr_80px] grid-rows-[3fr_1px_2fr_64px]"
     >
       <Slider class="carousel carousel-center w-full col-span-full row-span-full gap-6">
         {images?.map((image, index) => (

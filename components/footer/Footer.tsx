@@ -1,7 +1,7 @@
 import Logo from "$store/components/footer/Logo.tsx";
 import Newsletter from "$store/islands/Newsletter.tsx";
 import FooterItems from "$store/components/footer/FooterItems.tsx";
-import Social from "$store/components/footer/Social.tsx";
+import Blog from "$store/components/footer/Blog.tsx";
 import PaymentMethods from "$store/components/footer/PaymentMethods.tsx";
 import MobileApps from "$store/components/footer/MobileApps.tsx";
 import ExtraLinks from "$store/components/footer/ExtraLinks.tsx";
@@ -32,6 +32,12 @@ export interface SocialItem {
     | "Youtube"
     | "Twitter";
   link: string;
+}
+
+export interface BlogItem {
+  title?: string;
+  links?: { label: string; href: string }[];
+  items?: SocialItem[];
 }
 
 export interface PaymentItem {
@@ -74,7 +80,7 @@ export interface Layout {
     logo?: boolean;
     newsletter?: boolean;
     sectionLinks?: boolean;
-    socialLinks?: boolean;
+    blogLinks?: boolean;
     paymentMethods?: boolean;
     mobileApps?: boolean;
     regionOptions?: boolean;
@@ -95,10 +101,7 @@ export interface Props {
     form?: NewsletterForm;
   };
   sections?: Section[];
-  social?: {
-    title?: string;
-    items: SocialItem[];
-  };
+  blog?: BlogItem[];
   payments?: {
     title?: string;
     items: PaymentItem[];
@@ -152,10 +155,10 @@ function Footer({
       },
     ],
   }],
-  social = {
-    title: "Redes sociais",
+  blog = [{
+    links: [{ label: "Mens", href: "#" }],
     items: [{ label: "Instagram", link: "/" }, { label: "Tiktok", link: "/" }],
-  },
+  }],
   payments = {
     title: "Formas de pagamento",
     items: [{ label: "Mastercard" }, { label: "Visa" }, { label: "Pix" }],
@@ -171,7 +174,7 @@ function Footer({
       logo: false,
       newsletter: false,
       sectionLinks: false,
-      socialLinks: false,
+      blogLinks: false,
       paymentMethods: false,
       mobileApps: false,
       regionOptions: false,
@@ -197,9 +200,9 @@ function Footer({
         layout?.variation == "Variation 3"}
     />
   );
-  const _social = layout?.hide?.socialLinks
+  const _blog = layout?.hide?.blogLinks
     ? <></>
-    : <Social content={social} vertical={layout?.variation == "Variation 3"} />;
+    : <Blog content={blog} vertical={layout?.variation == "Variation 3"} />;
   const _payments = layout?.hide?.paymentMethods
     ? <></>
     : <PaymentMethods content={payments} />;
@@ -230,7 +233,7 @@ function Footer({
             <Divider />
             <div class="flex flex-col md:flex-row gap-10 md:gap-14 md:items-end">
               {_payments}
-              {_social}
+              {_blog}
               <div class="flex flex-col lg:flex-row gap-10 lg:gap-14 lg:items-end">
                 {_apps}
                 {_region}
@@ -248,7 +251,7 @@ function Footer({
             <div class="flex flex-col md:flex-row gap-10">
               <div class="flex flex-col gap-10 lg:w-1/2">
                 {_logo}
-                {_social}
+                {_blog}
                 {_payments}
                 {_apps}
                 {_region}
@@ -279,7 +282,7 @@ function Footer({
               <div class="flex flex-col gap-10 lg:gap-20 lg:w-3/5 lg:items-end">
                 <div class="flex flex-col md:flex-row gap-10">
                   {_sectionLinks}
-                  {_social}
+                  {_blog}
                 </div>
                 {_region}
               </div>
@@ -303,7 +306,7 @@ function Footer({
                     {_payments}
                   </div>
                   <div class="lg:flex-auto">
-                    {_social}
+                    {_blog}
                   </div>
                 </div>
                 <div class="flex flex-col gap-10 lg:gap-10">
@@ -328,7 +331,7 @@ function Footer({
               {_sectionLinks}
               <div class="flex flex-col gap-10 md:w-2/5 lg:pl-10">
                 {_payments}
-                {_social}
+                {_blog}
                 {_apps}
               </div>
             </div>
