@@ -44,7 +44,7 @@ export interface BlogProps {
   /** @format html */
   article?: string;
 
-  blogLinks?: BlogItem[]; 
+  blogLinks?: BlogItem[];
 }
 
 export interface PaymentItem {
@@ -163,13 +163,17 @@ function Footer({
     ],
   }],
   blog = {
-    article: "Estamos juntos nessa. Uma mensagem do nosso time sobre o COVID-19.", 
+    article:
+      "Estamos juntos nessa. Uma mensagem do nosso time sobre o COVID-19.",
     blogLinks: [
       {
         links: [{ label: "Mens", href: "#" }],
-        items: [{ label: "Instagram", link: "/" }, { label: "Tiktok", link: "/" }],
-      }
-    ]
+        items: [{ label: "Instagram", link: "/" }, {
+          label: "Tiktok",
+          link: "/",
+        }],
+      },
+    ],
   },
   payments = {
     title: "Formas de pagamento",
