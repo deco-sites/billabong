@@ -1,6 +1,7 @@
 import Logo from "$store/components/footer/Logo.tsx";
 import Newsletter from "$store/islands/Newsletter.tsx";
 import FooterItems from "$store/components/footer/FooterItems.tsx";
+import CategoryLinks from "$store/components/footer/CategoryLinks.tsx";
 import Blog from "$store/components/footer/Blog.tsx";
 import PaymentMethods from "$store/components/footer/PaymentMethods.tsx";
 import MobileApps from "$store/components/footer/MobileApps.tsx";
@@ -70,6 +71,15 @@ export interface NewsletterForm {
   helpText?: string;
 }
 
+export interface categoryItem {
+  label: string;
+  href: string
+}
+
+export interface categoryLinks {
+  categories?: categoryItem[]
+}
+
 export interface Layout {
   backgroundColor?:
     | "Primary"
@@ -93,6 +103,7 @@ export interface Layout {
     regionOptions?: boolean;
     extraLinks?: boolean;
     backToTheTop?: boolean;
+    categoryLinks?: boolean;
   };
 }
 
@@ -108,6 +119,12 @@ export interface Props {
     form?: NewsletterForm;
   };
   sections?: Section[];
+  categoryLinks?: {
+    categoryTable?: categoryLinks[];
+    layout?: {
+      alignment: "Row/Column" | "Row" | "Column"
+    }
+  };
   blog?: BlogProps;
   payments?: {
     title?: string;
@@ -162,6 +179,21 @@ function Footer({
       },
     ],
   }],
+  categoryLinks = {
+    categoryTable: [
+      { 
+        categories: [
+          {
+            label: "Feminino",
+            href: "#",
+          }
+        ],
+      }
+    ],
+    layout: {
+      alignment: "Row/Column",
+    },
+  },
   blog = {
     article:
       "Estamos juntos nessa. Uma mensagem do nosso time sobre o COVID-19.",
@@ -196,6 +228,7 @@ function Footer({
       regionOptions: false,
       extraLinks: false,
       backToTheTop: false,
+      categoryLinks: false,
     },
   },
 }: Props) {
@@ -216,6 +249,9 @@ function Footer({
         layout?.variation == "Variation 3"}
     />
   );
+  const _categoryLink = layout?.hide?.categoryLinks
+    ? <></>
+    : <CategoryLinks {...categoryLinks} />
   const _blog = layout?.hide?.blogLinks
     ? <></>
     : <Blog content={blog} vertical={layout?.variation == "Variation 3"} />;
@@ -275,6 +311,7 @@ function Footer({
               <div class="flex flex-col gap-10 lg:gap-20 lg:w-1/2 lg:pr-10">
                 {_newsletter}
                 {_sectionLinks}
+                {_categoryLink}
               </div>
             </div>
             <Divider />
@@ -344,7 +381,10 @@ function Footer({
             {layout?.hide?.newsletter ? <></> : <Divider />}
             {_logo}
             <div class="flex flex-col md:flex-row gap-10 lg:gap-20 md:justify-between">
-              {_sectionLinks}
+              <div class="flex flex-col lg:flex-row gap-8">
+                {_sectionLinks}
+                {_categoryLink}
+              </div>
               <div class="flex flex-col gap-10 md:w-2/5 lg:pl-10">
                 {_payments}
                 {_blog}
