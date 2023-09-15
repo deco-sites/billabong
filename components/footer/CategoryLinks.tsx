@@ -6,29 +6,34 @@ export type Item = {
 };
 
 export interface CategoryLinks {
-  categories?: Item[]
+  categories?: Item[];
 }
 
 export interface Props {
-  categoryTable?: CategoryLinks[]
+  categoryTable?: CategoryLinks[];
   layout?: {
-    alignment: "Row" | "Column" | "Row/Column"
-  }
+    alignment: "Row" | "Column" | "Row/Column";
+  };
 }
 
-
 export default function CategoryLinks({ categoryTable, layout }: Props) {
-  console.log(categoryTable, layout)
+  console.log(categoryTable, layout);
   return (
     <>
       {categoryTable && (
         <>
           <div
             class={`flex gap-4
-            ${ layout?.alignment === "Row" ? "flex-row" : layout?.alignment === "Column" ? "flex-col" : "flex-col md:flex-row"  } 
+            ${
+              layout?.alignment === "Row"
+                ? "flex-row"
+                : layout?.alignment === "Column"
+                ? "flex-col"
+                : "flex-col md:flex-row"
+            } 
           `}
           >
-            {categoryTable?.map(({categories}) => (
+            {categoryTable?.map(({ categories }) => (
               <ul class="flex flex-col gap-1 text-sm w-28">
                 {categories?.map(({ label, href }) => (
                   <div class="first:font-bold first:mb-2 last:text-[#FA0505] text-[#202020] text-sm font-medium flex flex-col">
@@ -38,12 +43,13 @@ export default function CategoryLinks({ categoryTable, layout }: Props) {
                       </a>
                     </li>
                   </div>
-                )) }
+                ))}
               </ul>
             ))}
           </div>
 
-          {/* Mobile view
+          {
+            /* Mobile view
           <ul class="flex flex-col md:hidden gap-4">
             {sections.map((section) => (
               <li>
@@ -65,7 +71,8 @@ export default function CategoryLinks({ categoryTable, layout }: Props) {
                 </details>
               </li>
             ))}
-          </ul> */}
+          </ul> */
+          }
         </>
       )}
     </>

@@ -73,11 +73,11 @@ export interface NewsletterForm {
 
 export interface categoryItem {
   label: string;
-  href: string
+  href: string;
 }
 
 export interface categoryLinks {
-  categories?: categoryItem[]
+  categories?: categoryItem[];
 }
 
 export interface Layout {
@@ -122,8 +122,8 @@ export interface Props {
   categoryLinks?: {
     categoryTable?: categoryLinks[];
     layout?: {
-      alignment: "Row/Column" | "Row" | "Column"
-    }
+      alignment: "Row/Column" | "Row" | "Column";
+    };
   };
   blog?: BlogProps;
   payments?: {
@@ -181,14 +181,14 @@ function Footer({
   }],
   categoryLinks = {
     categoryTable: [
-      { 
+      {
         categories: [
           {
             label: "Feminino",
             href: "#",
-          }
+          },
         ],
-      }
+      },
     ],
     layout: {
       alignment: "Row/Column",
@@ -251,7 +251,7 @@ function Footer({
   );
   const _categoryLink = layout?.hide?.categoryLinks
     ? <></>
-    : <CategoryLinks {...categoryLinks} />
+    : <CategoryLinks {...categoryLinks} />;
   const _blog = layout?.hide?.blogLinks
     ? <></>
     : <Blog content={blog} vertical={layout?.variation == "Variation 3"} />;

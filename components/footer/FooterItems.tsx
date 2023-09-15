@@ -49,7 +49,9 @@ export default function FooterItems(
               <li>
                 <details>
                   <summary>
-                    <span class="pl-1 py-2 font-bold text-[#202020] text-sm">{section.label}</span>
+                    <span class="pl-1 py-2 font-bold text-[#202020] text-sm">
+                      {section.label}
+                    </span>
                   </summary>
                   <ul
                     class={`flex flex-col gap-1 pl-5 pt-2`}
