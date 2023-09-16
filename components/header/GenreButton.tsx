@@ -1,17 +1,11 @@
-import Button from "$store/components/ui/Button.tsx";
-
 export default function GenreButton() {
   return (
-    <div>
-      <a href="/masculino">
-        <Button class="bg-[#f8f8f8] border-none">
+    <div class="h-full min-h-[70px] flex items-center">
+      <a href="/masculino" class="bg-[#f8f8f8] border-none flex items-center h-[70px] px-7">
           Masculino
-        </Button>
       </a>
-      <a href="/feminino">
-        <Button class="bg-[#FFF] border-none">
+      <a href="/feminino" class="bg-[#FFF] border-none flex items-center h-[70px] px-7">
           Feminino
-        </Button>
       </a>
     </div>
   );

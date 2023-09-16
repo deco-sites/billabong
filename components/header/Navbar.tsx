@@ -18,7 +18,7 @@ function Navbar({ items, searchbar, logo, hide }: {
     account: false | true;
     wishlist: false | true;
     alert: false | true;
-  }
+  };
   logo?: { src: string; alt: string };
 }) {
   return (
@@ -50,13 +50,13 @@ function Navbar({ items, searchbar, logo, hide }: {
 
       {/* Desktop Version */}
       <div>
-        <div class="2xl:container xl:mx-auto hidden md:flex flex-row justify-between items-center border-b border-base-200 w-full pl-2 pr-6">
+        <div class="2xl:container xl:mx-auto hidden md:flex flex-row justify-between items-center border-b border-base-200 w-full pl-2 pr-6 min-h-[70px]">
           <div class="flex">
             {logo && (
               <a
                 href="/"
                 aria-label="Store logo"
-                class="block pr-4 py-1 w-[90px]"
+                class="block pr-1 w-[70px] py-3"
               >
                 <Image src={logo.src} alt={logo.alt} width={50} height={41} />
               </a>
@@ -69,29 +69,29 @@ function Navbar({ items, searchbar, logo, hide }: {
               <SearchButton />
               <Searchbar searchbar={searchbar} />
             </div>
-            { !hide?.account && (
-            <a
-            class="btn btn-circle btn-sm btn-ghost"
-            href="/login"
-            aria-label="Log in"
-          >
-            <Icon id="User" size={24} strokeWidth={0.4} />
-          </a>
-          ) }
-          { !hide?.wishlist && (
-             <a
-              class="btn btn-circle btn-sm btn-ghost"
-              href="/wishlist"
-              aria-label="Wishlist"
-            >
-              <Icon
-                id="Heart"
-                size={24}
-                strokeWidth={2}
-                fill="none"
-              />
-            </a>
-            ) }
+            {!hide?.account && (
+              <a
+                class="btn btn-circle btn-sm btn-ghost"
+                href="/login"
+                aria-label="Log in"
+              >
+                <Icon id="User" size={24} strokeWidth={0.4} />
+              </a>
+            )}
+            {!hide?.wishlist && (
+              <a
+                class="btn btn-circle btn-sm btn-ghost"
+                href="/wishlist"
+                aria-label="Wishlist"
+              >
+                <Icon
+                  id="Heart"
+                  size={24}
+                  strokeWidth={2}
+                  fill="none"
+                />
+              </a>
+            )}
             {PLATFORM === "vtex" && <CartButtonVTEX />}
             {PLATFORM === "vnda" && <CartButtonVDNA />}
           </div>

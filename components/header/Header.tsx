@@ -61,7 +61,7 @@ export interface Props {
     account: false | true;
     wishlist: false | true;
     alert: false | true;
-  }
+  };
 }
 
 function Header({
@@ -84,7 +84,12 @@ function Header({
         >
           <div class="bg-base-100 fixed w-full z-50">
             {!hide?.alert && <Alert alerts={alerts} />}
-            <Navbar items={navItems} searchbar={searchbar} logo={logo} hide={hide} />
+            <Navbar
+              items={navItems}
+              searchbar={searchbar}
+              logo={logo}
+              hide={hide}
+            />
           </div>
         </Drawers>
       </header>
