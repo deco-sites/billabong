@@ -4,12 +4,12 @@ export default function GenreButton() {
   return (
     <div>
       <a href="/masculino">
-        <Button>
+        <Button class="bg-[#f8f8f8] border-none">
           Masculino
         </Button>
       </a>
       <a href="/feminino">
-        <Button>
+        <Button class="bg-[#FFF] border-none">
           Feminino
         </Button>
       </a>

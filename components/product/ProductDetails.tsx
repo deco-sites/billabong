@@ -365,10 +365,18 @@ function Details({
         <div class="mt-4 sm:mt-6 mx-4">
           <span class="text-sm">
             {page?.product?.description && (
-              <details>
-                <summary class="cursor-pointer">Descrição</summary>
-                <div class="ml-2 mt-2">{page?.product?.description}</div>
-              </details>
+              <>
+                <div class="flex sm:hidden">
+                  <details>
+                    <summary class="cursor-pointer">Descrição</summary>
+                    <div class="ml-2 mt-2">{page?.product?.description}</div>
+                  </details>
+                </div>
+                <div class="hidden sm:flex flex-col gap-6">
+                  <p class="font-bold text-2xl">Descrição</p>
+                  <div class="ml-2 mt-2 text-sm">{page?.product?.description}</div>
+              </div>
+              </>
             )}
           </span>
         </div>
@@ -424,7 +432,7 @@ function ProductDetails({ page, variant: maybeVar = "auto" }: Props) {
     : maybeVar;
 
   return (
-    <div class="container py-0 sm:py-10">
+    <div class="container py-0 sm:py-10 sm:mt-6">
       {page ? <Details page={page} variant={variant} /> : <NotFound />}
     </div>
   );
