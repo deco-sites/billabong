@@ -20,7 +20,7 @@ function NavItem(
   return (
     <li class="group flex items-center text-xs first:text-[#FFF] first:bg-black last:text-[#FA0505] w-full relative">
       <a href={href} class="px-4 py-7 w-full flex justify-center">
-        <span class="group-hover:underline">
+        <span class="group-hover:underline font-semibold">
           {label}
         </span>
       </a>
