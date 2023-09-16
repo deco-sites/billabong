@@ -67,14 +67,16 @@ function Navbar({ items, searchbar, logo }: {
             {PLATFORM === "vnda" && <CartButtonVDNA />}
           </div>
         </div>
-        <div class="2xl:container xl:mx-auto hidden flex-auto md:flex bg-[#f8f8f8] pl-2">
-          {items.map((item, index) => (
-            <NavItem
-              item={item}
-              length={items?.length}
-              index={index}
-            />
-          ))}
+        <div class="hidden flex-auto md:flex bg-[#f8f8f8]">
+          <div class="2xl:container xl:mx-auto hidden flex-auto md:flex pl-2">
+            {items.map((item, index) => (
+              <NavItem
+                item={item}
+                length={items?.length}
+                index={index}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </>

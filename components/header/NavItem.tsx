@@ -18,10 +18,7 @@ function NavItem(
   const { href, label, children } = item;
 
   return (
-    <li
-      class=
-        "group flex items-center text-xs first:text-[#FFF] first:bg-black last:text-[#FA0505] w-full relative"
-    >
+    <li class="group flex items-center text-xs first:text-[#FFF] first:bg-black last:text-[#FA0505] w-full relative">
       <a href={href} class="px-4 py-7 w-full flex justify-center">
         <span class="group-hover:underline">
           {label}
@@ -31,16 +28,14 @@ function NavItem(
       {children && children.length > 0 &&
         (
           <div
-            class={
-            `absolute hidden hover:flex group-hover:flex z-50 items-start justify-center gap-6 border-base-200 bg-[#f8f8f8] border-b-2 last:text-[#FA0505] first:bg-[#000] first:border-t-transparent
+            class={`absolute hidden hover:flex group-hover:flex z-50 items-start justify-center gap-6 border-base-200 bg-[#f8f8f8] border-b-2 last:text-[#FA0505] first:bg-[#000] first:border-t-transparent
             ${
-              length - 1 === index
-                && "right-0 text-[#FA0505]"
+              length - 1 === index &&
+              "right-0 text-[#FA0505]"
             }s
             `}
             style={{ top: "71px" }}
           >
-
             <ul
               class={`grid items-start justify-center gap-2 px-2 py-4 
               ${children.length > 8 ? "grid-cols-3" : "grid-cols-2"}
