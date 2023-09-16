@@ -48,7 +48,6 @@ function Result({
   cardLayout,
 }: Omit<Props, "page"> & { page: ProductListingPage }) {
   const { products, filters, breadcrumb, pageInfo, sortOptions } = page;
-  console.log(pageInfo);
   const pages = Math.ceil(
     pageInfo.records as number / (pageInfo?.recordPerPage ?? 1) as number,
   );

@@ -17,7 +17,6 @@ export interface Props {
 }
 
 export default function CategoryLinks({ categoryTable, layout }: Props) {
-  console.log(categoryTable, layout);
   return (
     <>
       {categoryTable && (
