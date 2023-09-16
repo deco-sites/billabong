@@ -207,7 +207,15 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
                 </div>
               </>
             )
-            : ""}
+            : (
+              <div class="absolute left-0 top-0">
+                <Image src="https://d2e5mvjndnxyoo.cloudfront.net/Custom/Content/Flags/0044_flag_637323121541817820.png?p="
+                  width={44}
+                  height={36}
+                  class="w-[110px]"
+                />
+              </div>
+            )}
         </a>
         <figcaption
           class={`

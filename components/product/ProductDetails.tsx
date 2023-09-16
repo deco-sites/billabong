@@ -374,8 +374,10 @@ function Details({
                 </div>
                 <div class="hidden sm:flex flex-col gap-6">
                   <p class="font-bold text-2xl">Descrição</p>
-                  <div class="ml-2 mt-2 text-sm">{page?.product?.description}</div>
-              </div>
+                  <div class="text-sm">
+                    {page?.product?.description}
+                  </div>
+                </div>
               </>
             )}
           </span>
