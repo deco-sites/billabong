@@ -19,13 +19,10 @@ function NavItem(
 
   return (
     <li
-      class={`group flex items-center ${
-        0 === index
-          ? " text-[#FFF] bg-[#000]"
-          : length - 1 === index && "text-[#FA0505]"
-      }`}
+      class=
+        "group flex items-center text-xs first:text-[#FFF] first:bg-black last:text-[#FA0505] w-full relative"
     >
-      <a href={href} class="px-4 py-3">
+      <a href={href} class="px-4 py-7 w-full flex justify-center">
         <span class="group-hover:underline">
           {label}
         </span>
@@ -34,33 +31,20 @@ function NavItem(
       {children && children.length > 0 &&
         (
           <div
-            class={`fixed hidden hover:flex group-hover:flex z-50 items-start justify-center gap-6 border-base-200 bg-[#f8f8f8] 
+            class={
+            `absolute hidden hover:flex group-hover:flex z-50 items-start justify-center gap-6 border-base-200 bg-[#f8f8f8] border-b-2 last:text-[#FA0505] first:bg-[#000] first:border-t-transparent
             ${
               length - 1 === index
-                ? "-translate-x-64 text-[#FA0505]"
-                : index === 0
-                ? "translate-x-0 bg-[#000]"
-                : "-translate-x-8 border-b-2 border-t"
-            }`}
-            style={{ top: "48px", marginTop: headerHeight }}
-          >
-            {
-              /* {image?.src && (
-              <Image
-                class="p-6"
-                src={image.src}
-                alt={image.alt}
-                width={300}
-                height={332}
-                loading="lazy"
-              />
-            )} */
+                && "right-0 text-[#FA0505]"
             }
+            `}
+            style={{ top: "71px" }}
+          >
+
             <ul
               class={`grid items-start justify-center gap-2 px-2 py-4 
               ${children.length > 8 ? "grid-cols-3" : "grid-cols-2"}
-              ${length - 1 === index && "w-max"}
-              ${0 === index && "bg-[#000]"}
+              w-[300px] ${0 === index && "bg-[#000]"}
               `}
             >
               {children.map((node) => (

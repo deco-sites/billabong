@@ -78,7 +78,7 @@ export default function BannerTriplo({
         alignment={"left"}
       />
       <div
-        class={`flex flex-col md:flex-row gap-4 md:gap-6 pt-5 mb-12 `}
+        class={`flex flex-col md:flex-row xl:justify-center gap-4 md:gap-6 pt-5 mb-12 `}
       >
         <a
           href={banners[0]?.href}
