@@ -30,19 +30,33 @@ function Navbar({ items, searchbar, logo, hide }: {
       >
         <MenuButton />
 
+        <div class="flex">
+          <SearchButton />
+        </div>
+
+
         {logo && (
           <a
             href="/"
-            class="flex-grow inline-flex items-center"
+            class="inline-flex items-center"
             style={{ minHeight: navbarHeight }}
             aria-label="Store logo"
-          >
+            >
             <Image src={logo.src} alt={logo.alt} width={50} height={41} />
           </a>
         )}
 
-        <div class="flex gap-1">
-          <SearchButton />
+        {!hide?.account && (
+          <a
+            class="btn btn-circle btn-sm btn-ghost"
+            href="/login"
+            aria-label="Log in"
+          >
+            <Icon id="User" size={24} strokeWidth={0.4} />
+          </a>
+        )}
+    
+        <div>
           {PLATFORM === "vtex" && <CartButtonVTEX />}
           {PLATFORM === "vnda" && <CartButtonVDNA />}
         </div>

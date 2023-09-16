@@ -30,7 +30,7 @@ const Aside = (
     logo?: { src: LiveImage; alt: string };
   },
 ) => (
-  <div class="bg-base-100 grid grid-rows-[auto_1fr] h-full divide-y max-w-[70vw]">
+  <div class={`bg-base-100 grid grid-rows-[auto_1fr] h-full divide-y max-w-[440px]`}>
     <div class="flex justify-center items-center relative">
       {onClose && (
         <Button class="absolute left-2 top-2" onClick={onClose}>
