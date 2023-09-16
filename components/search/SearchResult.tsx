@@ -63,7 +63,7 @@ function Result({
         />
 
         {layout?.variant === "aside" && filters.length > 0 && (
-          <aside class="hidden sm:block min-w-[250px] w-full">
+          <aside class="hidden sm:block min-w-[250px] w-full bg-[#f8f8f8]">
             <FiltersRows filters={filters} />
           </aside>
         )}

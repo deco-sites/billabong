@@ -14,7 +14,7 @@ function Breadcrumb({ itemListElement = [] }: Props) {
           .filter(({ name, item }) => name && item)
           .map(({ name, item }) => (
             <li>
-              <a class="text-sm font-bold" href={item}>{name}</a>
+              <a class="text-xs font-bold" href={item}>{name}</a>
             </li>
           ))}
       </ul>
