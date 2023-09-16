@@ -34,14 +34,13 @@ function Navbar({ items, searchbar, logo, hide }: {
           <SearchButton />
         </div>
 
-
         {logo && (
           <a
             href="/"
             class="inline-flex items-center"
             style={{ minHeight: navbarHeight }}
             aria-label="Store logo"
-            >
+          >
             <Image src={logo.src} alt={logo.alt} width={50} height={41} />
           </a>
         )}
@@ -52,10 +51,10 @@ function Navbar({ items, searchbar, logo, hide }: {
             href="/login"
             aria-label="Log in"
           >
-            <Icon id="User" size={24} strokeWidth={0.4} />
+            <Icon id="User" size={28} strokeWidth={0.4} />
           </a>
         )}
-    
+
         <div>
           {PLATFORM === "vtex" && <CartButtonVTEX />}
           {PLATFORM === "vnda" && <CartButtonVDNA />}

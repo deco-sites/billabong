@@ -27,7 +27,7 @@ export default function SearchButton() {
           displaySearchDrawer.value = !displaySearchDrawer.value;
         }}
       >
-        <Icon id="MagnifyingGlass" size={24} strokeWidth={0.1} />
+        <Icon id="MagnifyingGlass" size={28} strokeWidth={0.1} />
       </Button>
     </>
   );
