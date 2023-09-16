@@ -36,7 +36,7 @@ function NavItem(
             ${
               length - 1 === index
                 && "right-0 text-[#FA0505]"
-            }
+            }s
             `}
             style={{ top: "71px" }}
           >
@@ -54,18 +54,6 @@ function NavItem(
                   <a class="hover:underline" href={node.href}>
                     <span>{node.label}</span>
                   </a>
-
-                  {
-                    /* <ul class="flex flex-col gap-1 mt-4">
-                    {node.children?.map((leaf) => (
-                      <li>
-                        <a class="hover:underline" href={leaf.href}>
-                          <span class="text-xs">{leaf.label}</span>
-                        </a>
-                      </li>
-                    ))}
-                  </ul> */
-                  }
                 </li>
               ))}
             </ul>
