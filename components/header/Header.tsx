@@ -57,12 +57,18 @@ export interface Props {
 
   /** @title Logo */
   logo?: { src: Image; alt: string };
+  hide?: {
+    account: false | true;
+    wishlist: false | true;
+    alert: false | true;
+  }
 }
 
 function Header({
   alerts,
   searchbar: _searchbar,
   products,
+  hide,
   menuBottom,
   navItems = [],
   suggestions,
@@ -77,8 +83,8 @@ function Header({
           searchbar={searchbar}
         >
           <div class="bg-base-100 fixed w-full z-50">
-            <Alert alerts={alerts} />
-            <Navbar items={navItems} searchbar={searchbar} logo={logo} />
+            {!hide?.alert && <Alert alerts={alerts} />}
+            <Navbar items={navItems} searchbar={searchbar} logo={logo} hide={hide} />
           </div>
         </Drawers>
       </header>

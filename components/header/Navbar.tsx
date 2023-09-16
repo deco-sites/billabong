@@ -1,5 +1,6 @@
 import type { Props as SearchbarProps } from "$store/components/search/Searchbar.tsx";
 import { MenuButton, SearchButton } from "$store/islands/Header/Buttons.tsx";
+import Icon from "$store/components/ui/Icon.tsx";
 import CartButtonVDNA from "$store/islands/Header/Cart/vnda.tsx";
 import CartButtonVTEX from "$store/islands/Header/Cart/vtex.tsx";
 import Searchbar from "$store/islands/Header/Searchbar.tsx";
@@ -10,9 +11,14 @@ import NavItem from "./NavItem.tsx";
 import { navbarHeight } from "./constants.ts";
 import GenreButton from "$store/components/header/GenreButton.tsx";
 
-function Navbar({ items, searchbar, logo }: {
+function Navbar({ items, searchbar, logo, hide }: {
   items: INavItem[];
   searchbar: SearchbarProps;
+  hide?: {
+    account: false | true;
+    wishlist: false | true;
+    alert: false | true;
+  }
   logo?: { src: string; alt: string };
 }) {
   return (
@@ -63,6 +69,29 @@ function Navbar({ items, searchbar, logo }: {
               <SearchButton />
               <Searchbar searchbar={searchbar} />
             </div>
+            { !hide?.account && (
+            <a
+            class="btn btn-circle btn-sm btn-ghost"
+            href="/login"
+            aria-label="Log in"
+          >
+            <Icon id="User" size={24} strokeWidth={0.4} />
+          </a>
+          ) }
+          { !hide?.wishlist && (
+             <a
+              class="btn btn-circle btn-sm btn-ghost"
+              href="/wishlist"
+              aria-label="Wishlist"
+            >
+              <Icon
+                id="Heart"
+                size={24}
+                strokeWidth={2}
+                fill="none"
+              />
+            </a>
+            ) }
             {PLATFORM === "vtex" && <CartButtonVTEX />}
             {PLATFORM === "vnda" && <CartButtonVDNA />}
           </div>
