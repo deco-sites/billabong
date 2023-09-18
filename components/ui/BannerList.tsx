@@ -96,9 +96,9 @@ const RADIUS_DESKTOP = {
 
 function renderWidth(itemsPerLine: number) {
   if (itemsPerLine === 4) {
-    return 74.25;
+    return 81.67;
   } else if (itemsPerLine === 3) {
-    return 105;
+    return 115.5;
   } else if (itemsPerLine === 2) {
     return 135;
   } else {
@@ -150,13 +150,13 @@ export default function BannerList({
                 media="(max-width: 767px)"
                 src={srcMobile}
                 width={renderWidth(itemsPerLine.mobile ?? 0)}
-                height={137.5}
+                height={150.5}
               />
               <Source
                 media="(min-width: 768px)"
                 src={srcDesktop}
                 width={renderWidth(itemsPerLine.desktop ?? 0)}
-                height={137.5}
+                height={150.5}
               />
               <img
                 class={`w-full h-[550px] object-cover ${
