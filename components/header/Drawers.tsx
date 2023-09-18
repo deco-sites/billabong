@@ -1,4 +1,5 @@
 import type { Props as MenuProps } from "$store/components/header/Menu.tsx";
+import LinksMenu from "$store/components/header/LinksMenu.tsx";
 import Cart from "$store/components/minicart/Cart.tsx";
 import type { Props as SearchbarProps } from "$store/components/search/Searchbar.tsx";
 import Button from "$store/components/ui/Button.tsx";
@@ -31,7 +32,7 @@ const Aside = (
   },
 ) => (
   <div
-    class={`bg-base-100 grid grid-rows-[auto_1fr] h-full divide-y max-w-[440px]`}
+    class={`bg-base-100 grid ${title === "Buscar" ? "grid-rows-[auto_1fr_6fr]" : "grid-rows-[auto_1fr]"} h-full divide-y max-w-[440px]`}
   >
     <div class="flex justify-center items-center relative">
       {onClose && (
@@ -84,7 +85,12 @@ function Drawers({ menu, searchbar, children }: Props) {
           title={displayMenu.value ? "Menu" : "Buscar"}
         >
           {displayMenu.value && <Menu {...menu} />}
-          {displaySearchDrawer.value && <Searchbar {...searchbar} />}
+          {displaySearchDrawer.value && (
+            <>
+              <Searchbar {...searchbar} />
+              <LinksMenu {...menu} />
+            </>
+          )}
         </Aside>
       }
     >

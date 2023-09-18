@@ -72,7 +72,7 @@ export default function BannerTriplo({
   banners = [],
 }: Props) {
   return (
-    <section class={`2xl:container w-full mx-auto px-2 mt-7`}>
+    <section class={`2xl:container w-full mx-auto px-4 mt-7`}>
       <HeaderSections
         title={title}
         alignment={"left"}

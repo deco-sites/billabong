@@ -75,26 +75,13 @@ function Searchbar({
       style={{ gridTemplateRows: "min-content auto" }}
     >
       <div class="flex items-center gap-4">
-        <form id={id} action={action} class="join">
-          {
-            /* {loading.value
-            ? (
-              <Button
-                type="submit"
-                class="join-item btn-square"
-                aria-label="Search"
-                for={id}
-                tabIndex={-1}
-              >
-                <span class="loading loading-spinner loading-xs" />
-              </Button>
-            )
-            : ""} */
-          }
+        <form id={id} action={action} class="join w-full md:w-auto">
+          
+          <Icon id="MagnifyingGlass" class="md:hidden" size={28} strokeWidth={0.1} />
           <input
             ref={searchInputRef}
             // id="search-input"
-            class="input inputSearch bg-[#f8f8f8] flex-grow border-none focus:border-none active:border-none outline-none md:w-[320px]"
+            class="input inputSearch bg-transparent md:bg-[#f8f8f8] flex-grow border-none focus:border-none active:border-none outline-none w-full md:w-[320px]"
             name={name}
             defaultValue={query}
             onInput={(e) => {
@@ -128,7 +115,7 @@ function Searchbar({
         ? ""
         : notFound
         ? (
-          <div class="absolute top-[66px] bg-[#f8f8f8] z-[99] left-0 flex flex-col gap-4 w-full p-3">
+          <div class="absolute top-[130px] md:top-[56px] bg-[#f8f8f8] z-[99] left-0 flex flex-col gap-4 w-full p-3">
             <span
               class="font-medium text-xl text-center"
               role="heading"
@@ -143,16 +130,16 @@ function Searchbar({
           </div>
         )
         : (
-          <div class="absolute top-[66px] bg-[#f8f8f8] z-[99] left-0 flex w-full">
-            <div class="gap-4 flex flex-col overflow-y-scroll md:p-2">
+          <div class="absolute top-[130px] md:top-[56px] bg-[#f8f8f8] z-[99] left-0 flex w-full">
+            <div class="gap-4 flex flex-col overflow-y-scroll p-3 md:p-2 h-[75vh] md:h-auto">
               <div
                 class={hasTerms ? "flex flex-col gap-6" : "hidden"}
               >
-                <ul id="search-suggestion" class="flex flex-col gap-6">
+                <ul id="search-suggestion" class="flex flex-col gap-3 md:gap-6">
                   {searches.map(({ term }) => (
                     <li>
-                      <a href={`/s?q=${term}`} class="flex gap-4 items-center">
-                        <span>
+                      <a href={`/s?q=${term}`} class="flex gap-2 md:gap-4 items-center">
+                        <span class="hidden md:inline">
                           <Icon
                             id="MagnifyingGlass"
                             size={24}
