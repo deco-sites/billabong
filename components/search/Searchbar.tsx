@@ -76,8 +76,12 @@ function Searchbar({
     >
       <div class="flex items-center gap-4">
         <form id={id} action={action} class="join w-full md:w-auto">
-          
-          <Icon id="MagnifyingGlass" class="md:hidden" size={28} strokeWidth={0.1} />
+          <Icon
+            id="MagnifyingGlass"
+            class="md:hidden"
+            size={28}
+            strokeWidth={0.1}
+          />
           <input
             ref={searchInputRef}
             // id="search-input"
@@ -138,7 +142,10 @@ function Searchbar({
                 <ul id="search-suggestion" class="flex flex-col gap-3 md:gap-6">
                   {searches.map(({ term }) => (
                     <li>
-                      <a href={`/s?q=${term}`} class="flex gap-2 md:gap-4 items-center">
+                      <a
+                        href={`/s?q=${term}`}
+                        class="flex gap-2 md:gap-4 items-center"
+                      >
                         <span class="hidden md:inline">
                           <Icon
                             id="MagnifyingGlass"

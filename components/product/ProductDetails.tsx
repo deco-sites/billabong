@@ -83,7 +83,7 @@ function ProductInfo({ page }: { page: ProductDetailsPage }) {
         </h1>
       </div>
       {/* Prices */}
-      <div class="mt-4 flex">
+      <div class="mt-4 flex flex-col gap-2 md:flex-row">
         <div class="w-1/2">
           <div class="flex flex-row sm:flex-col gap-2 sm:gap-0 items-center sm:items-start">
             {listPrice && price && (

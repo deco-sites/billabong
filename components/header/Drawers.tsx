@@ -32,7 +32,9 @@ const Aside = (
   },
 ) => (
   <div
-    class={`bg-base-100 grid ${title === "Buscar" ? "grid-rows-[auto_1fr_6fr]" : "grid-rows-[auto_1fr]"} h-full divide-y max-w-[440px]`}
+    class={`bg-base-100 grid ${
+      title === "Buscar" ? "grid-rows-[auto_1fr_6fr]" : "grid-rows-[auto_1fr]"
+    } h-full divide-y max-w-[440px]`}
   >
     <div class="flex justify-center items-center relative">
       {onClose && (

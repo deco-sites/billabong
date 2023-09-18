@@ -9,7 +9,6 @@ export interface Props {
   logo?: { src: LiveImage; alt: string };
 }
 
-
 function Menu({ items, menuBottom }: Props) {
   return (
     <div class="flex flex-col h-full bg-[#f8f8f8]">

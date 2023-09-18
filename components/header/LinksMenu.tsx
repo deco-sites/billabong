@@ -27,7 +27,7 @@ function MenuItem({ item }: { item: NavItem }) {
   );
 }
 
-export default function LinksMenu({items, menuBottom}: Props) {
+export default function LinksMenu({ items, menuBottom }: Props) {
   return (
     <div class="flex flex-col">
       <ul class="px-4 flex-grow flex flex-col divide-y divide-base-200">
@@ -51,5 +51,5 @@ export default function LinksMenu({items, menuBottom}: Props) {
         ))}
       </ul>
     </div>
-  )
+  );
 }
