@@ -98,8 +98,8 @@ export default function BannerTriplo({
               src={banners[0]?.srcDesktop
                 ? banners[0]?.srcDesktop
                 : banners[0]?.srcMobile}
-              width={137}
-              height={99}
+              width={150}
+              height={108}
             />
             <img
               class="w-full object-cover h-[550px]"
